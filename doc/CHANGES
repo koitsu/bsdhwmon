@@ -1,3 +1,6 @@
+20151231
+	Migrate to github.com instead of my own local CVS repository.
+
 20140811
 	Documentation/CHANGES typos/fixes.
 
@@ -20,7 +23,6 @@
 
 	Use -Werror -Wall for non-debug builds, and use -Wformat-security
 	for both build types.
-
 
 20120702
 	Some general documentation adjustments; nothing important.
@@ -65,7 +67,6 @@
 
 	Update all source code headers' copyright years.
 
-
 20090703
 	Fix SMBus slave address addressing bug.  SMBus slave addresses
 	are actually shifted to the left 1 bit (e.g. 0x2f becomes 0x5e),
@@ -80,7 +81,6 @@
 
 	Update author Email address.
 
-
 20081107
 	Extend SMBIOS checking; previously we used smbios.planar.model,
 	now we use both smbios.planar.maker AND smbios.planar.model.  This
@@ -94,7 +94,6 @@
 	cross-referencing when others look at the source.
 
 	New board: Supermicro X7SBA.
-
 
 20081005
 	Initial public release.
