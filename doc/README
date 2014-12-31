@@ -1,0 +1,43 @@
+Description
+=============
+bsdhwmon(8) is a program for FreeBSD for monitoring hardware sensors
+(fans, temperatures, voltages, chassis intrusion, and more) on
+commerical-grade server hardware. bsdhwmon(8) is developed with a very
+different mentality compared to other softwares: 
+
+- Written with stability and production environments in mind
+- Intended for use with server products (Intel, Supermicro, Tyan, and
+  possibly others)
+- Solely uses smb(4), significantly decreasing risks and CPU usage
+- Based primarily on documentation provided by motherboard/server
+  vendors and H/W monitoring IC manufacturers
+- Full tested on both i386 and amd64 systems, using RELENG_6,
+  RELENG_7, RELENG_8, and RELENG_9
+- Written entirely in C
+- Completely standalone; relies on no third-party libraries or tools
+  (autoconf, etc.)
+- Very simple and clean code -- heavily commented, well-documented,
+  developed and built with -Wall -Werror, and similar ideals
+- Open-source, released under the FreeBSD 2-clause BSD license
+
+
+Supported Hardware
+====================
+Please see the SUPPORTED file.
+
+
+Supported Operating Systems
+=============================
+FreeBSD 6.x (RELENG_6)
+FreeBSD 7.x (RELENG_7)
+FreeBSD 8.x (RELENG_8)
+FreeBSD 9.x (RELENG_9)
+
+
+Other Details
+===============
+Please see the bsdhwmon(8) man page for further information.
+
+
+
+$Id: README,v 1.4 2012/10/23 13:11:08 jdc Exp $

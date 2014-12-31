@@ -1,0 +1,254 @@
+/*
+$Id: output.c,v 1.20 2014/12/31 18:43:11 jdc Exp $
+*/
+/*
+Copyright (C) 2008-2015 Jeremy Chadwick. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL AUTHOR OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+*/
+
+#include <stdio.h>
+#include <strings.h>
+#include <stdlib.h>
+#include <sysexits.h>
+
+#include "global.h"
+
+/*
+ * Function prototypes
+ */
+const char *	get_chip_string(const uint16_t);
+void		list_models(const struct board *);
+void		sensors_output(const struct board *, const struct sensors *);
+void		sensors_output_delim(const struct board *, const struct sensors *);
+void		sensors_output_json(const struct board *, const struct sensors *);
+
+/*
+ * External functions (main.c)
+ */
+extern void	VERBOSE(const char *, ...);
+
+
+/*
+ * get_chip_string(uint16_t idx)
+ *
+ * idx = index value; see "chips_e" enum in global.h
+ *
+ * Return pointer to an ASCII string representation of the H/W
+ * monitoring chip model.
+ */
+const char *
+get_chip_string(const uint16_t idx)
+{
+	switch (idx) {
+		case CUSTOM_X6DVA:	return ("X6DVA/X6DVL/X6DAL");
+		case WINBOND_W83792D:	return ("Winbond W83792D");
+		case WINBOND_W83793G:	return ("Winbond W83793G");
+	}
+	return ("Unknown");
+}
+
+
+/*
+ * list_models(struct board *b)
+ *
+ * b = Pointers to board struct; see boards.c for a definition
+ *
+ * Outputs a list of everything in the boardlist[] struct.  This is
+ * used when calling the main program with the "-l" argument.
+ */
+void
+list_models(const struct board *b)
+{
+	uint16_t i = 0;
+
+	VERBOSE("list_models(b = %p)\n", b);
+
+	printf("maker          product                Chip type           Slave addr.\n");
+	printf("-------------  ---------------------  ------------------  -----------\n");
+
+	while (1) {
+		/*
+		 * We're at the end of the structure...
+		 */
+		if (b[i].maker == NULL) {
+			break;
+		}
+
+		/*
+		 * For boards with multiple SMBus slave addresses or custom
+		 * methods, output something a little more sane here
+		 *
+		 * Otherwise, output the SMBus Slave address as expected.
+		 */
+		if (b[i].slave == -1) {
+			printf("%-13s  %-21s  %-18s  Custom\n",
+				b[i].maker,
+				b[i].product,
+				get_chip_string(b[i].chip)
+			);
+		} else {
+			printf("%-13s  %-21s  %-18s  0x%02x\n",
+				b[i].maker,
+				b[i].product,
+				get_chip_string(b[i].chip),
+				b[i].slave
+			);
+		}
+		++i;
+	}
+	printf("-------------  ---------------------  ------------------  -----------\n");
+
+	VERBOSE("list_models() returning\n");
+	exit(EX_OK);
+}
+
+
+void
+sensors_output(const struct board *b, const struct sensors *s)
+{
+	uint16_t i;
+	uint16_t enum_index;
+
+	VERBOSE("sensors_output(b = %p, s = %p)\n", b, s);
+
+	for (i = 0; b->temps[i].label != NULL; ++i) {
+		enum_index = b->temps[i].index;
+
+		printf("%-20s %8u C\n",
+			b->temps[i].label,
+			s->temps[enum_index].value
+		);
+	}
+
+	for (i = 0; b->fans[i].label != NULL; ++i) {
+		enum_index = b->fans[i].index;
+
+		printf("%-20s %8u RPM\n",
+			b->fans[i].label,
+			s->fans[enum_index].value
+		);
+	}
+
+	for (i = 0; b->voltages[i].label != NULL; ++i) {
+		enum_index = b->voltages[i].index;
+
+		printf("%-20s %8.3f V\n",
+			b->voltages[i].label,
+			s->voltages[enum_index].value
+		);
+	}
+
+	VERBOSE("sensors_output() returning\n");
+}
+
+
+void
+sensors_output_delim(const struct board *b, const struct sensors *s)
+{
+	uint16_t i;
+	uint16_t enum_index;
+
+	VERBOSE("sensors_output_delim(b = %p, s = %p)\n", b, s);
+
+	for (i = 0; b->temps[i].label != NULL; ++i) {
+		enum_index = b->temps[i].index;
+
+		printf("%s,%u,C\n",
+			b->temps[i].label,
+			s->temps[enum_index].value
+		);
+	}
+
+	for (i = 0; b->fans[i].label != NULL; ++i) {
+		enum_index = b->fans[i].index;
+
+		printf("%s,%u,RPM\n",
+			b->fans[i].label,
+			s->fans[enum_index].value
+		);
+	}
+
+	for (i = 0; b->voltages[i].label != NULL; ++i) {
+		enum_index = b->voltages[i].index;
+
+		printf("%s,%.3f,V\n",
+			b->voltages[i].label,
+			s->voltages[enum_index].value
+		);
+	}
+
+	VERBOSE("sensors_output_delim() returning\n");
+}
+
+
+void
+sensors_output_json(const struct board *b, const struct sensors *s)
+{
+	uint16_t i;
+	uint16_t enum_index;
+
+	VERBOSE("sensors_output_json(b = %p, s = %p)\n", b, s);
+
+	printf("{\n");
+
+	printf("\t\"temps\": {\n");
+	for (i = 0; b->temps[i].label != NULL; ++i) {
+		enum_index = b->temps[i].index;
+
+		printf("\t\t\"%s\": \"%u C\"%s\n",
+			b->temps[i].label,
+			s->temps[enum_index].value,
+			(b->temps[i+1].label == NULL ? "" : ",")
+		);
+	}
+	printf("\t},\n");
+
+	printf("\t\"fans\": {\n");
+	for (i = 0; b->fans[i].label != NULL; ++i) {
+		enum_index = b->fans[i].index;
+
+		printf("\t\t\"%s\": \"%u RPM\"%s\n",
+			b->fans[i].label,
+			s->fans[enum_index].value,
+			(b->fans[i+1].label == NULL ? "" : ",")
+		);
+	}
+	printf("\t},\n");
+
+	printf("\t\"voltages\": {\n");
+	for (i = 0; b->voltages[i].label != NULL; ++i) {
+		enum_index = b->voltages[i].index;
+
+		printf("\t\t\"%s\": \"%.3f V\"%s\n",
+			b->voltages[i].label,
+			s->voltages[enum_index].value,
+			(b->voltages[i+1].label == NULL ? "" : ",")
+		);
+	}
+	printf("\t}\n");
+
+	printf("}\n");
+	VERBOSE("sensors_output_json() returning\n");
+}
+

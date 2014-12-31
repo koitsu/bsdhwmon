@@ -1,0 +1,37 @@
+Winbond W83792D: +5V Vcc is incorrect
+=======================================
+Currently, boards which use the Winbond W83792D H/W monitoring IC will
+have their +5V voltage shown incorrectly.
+
+I've mailed Supermicro to try and find out why the calculation formula
+is wrong (since what I'm following comes from Winbond), but as of this
+writing have received no response.
+
+I have also looked at the Linux lm-sensors project, but the code is
+quite "spaghetti" -- it's hard to discern what the calculation values
+are, and if they're the same for all W83792D systems.
+
+
+Winbond W83792D: FAN3 RPMs may be inaccurate/high
+===================================================
+I've received a single (isolated) report involving a Supermicro P8SCi
+board reporting absurdly high values for FAN3.  Example:
+
+FAN1                        0 RPM
+FAN2                     2909 RPM
+FAN3                    84375 RPM
+FAN4                        0 RPM
+FAN5                        0 RPM
+
+Further executions of bsdhwmon did not exhibit this problem.  However,
+I take the report seriously, as it could indicate a strange bug in
+bsdhwmon, or possibly a bug in the Winbond W83792D chipset.  At this
+time I have not been able to determine the root cause, however the
+user had his fan RPM configuration in the system BIOS set to
+"3-pin Server" rather than "Disabled" (which runs the fans at full
+speed).  This could be a bug in the Winbond chipset, but I simply
+don't know.
+
+
+
+$Id: BUGS,v 1.4 2012/10/23 13:11:08 jdc Exp $

@@ -1,0 +1,21 @@
+Never-ending
+==============
+- Add support for more motherboards as users request such.  :-)
+
+
+Long-term TODO
+================
+- Extend structs to support custom mathematics operations; for
+  example, some boards might calculate +5V differently than others,
+  depending upon the value of the resistor tied to that pin.
+- Replace the gigantic database of motherboards and output params with
+  a text file, so that users can modify and change the output strings
+  to whever they wish.  This would also decrease the program/binary
+  size.
+- Get in contact with Tyan regarding the Thunder LE-T (S2518), which
+  appears to use the Winbond W83782D, and see if they'll provide SMBus
+  documentation (if it supports tie-ins).
+
+
+
+$Id: TODO,v 1.4 2013/04/10 09:51:00 jdc Exp $

@@ -1,0 +1,104 @@
+20140811
+	Documentation/CHANGES typos/fixes.
+
+20140625
+	For read_byte() and write_byte(), renamed "index" variable to
+	"idxreg" to avoid potential shadowing conflicts.
+
+20130605
+	Added -J flag to provide JSON-formatted output.
+
+	Change post-increment (ex. i++) to pre-increment (ex. ++i).
+
+	Remove some unused function prototype declarations, and declare a
+	few functions as static.
+
+	Shortened lines in some documentation.
+
+	Clean up error handling code in main, make SMB I/O routines
+	exit with EX_IOERR rather than 1.
+
+	Use -Werror -Wall for non-debug builds, and use -Wformat-security
+	for both build types.
+
+
+20120702
+	Some general documentation adjustments; nothing important.
+
+	Adjust some CFLAGS (remove -Wunused; implied by -Wall).
+
+	Split collect.c up into individual chip_XXX.c files; easier to
+	maintain.
+
+	W83627DHG: Add support for the Nuvoton/Winbond 83627DHG-P
+	and 83627DHG-PT.
+
+	Properly fix SMBus slave address addressing "bug" in 20090703.
+	smb(4) and ichsmb(4) changes made shortly after the release of
+	7.2-RELEASE (specifically __FreeBSD_version 702101) caused this.
+	Key off of __FreeBSD_version to decide whether or not to shift
+	the slave address or not.  Thanks to Billy Newsom for bringing
+	this to my attention.
+
+	W83792D: Fetch Winbond chip revision for debugging purposes.
+
+	Use exclusive locks when opening the /dev/smbX device; this ensures
+	only one bsdhwmon process can access the device at a time.
+
+	Fixes for small memory leaks (missing free() statements), re-order
+	some include statements, and pre-initialise some structs.  Valgrind
+	came in handy here for sure!
+
+	Try our best to adhere to style(9).  This includes:
+	- Making use of err(3) family functions and sysexits(3) codes
+	- General code formatting changes
+
+	Ensure consistency of variable sizes between x86 and amd64; make
+	use of intXX_t and uintXX_t types.  This also falls under style(9).
+
+	Addition of doc/REFERENCES (technical reference material).
+
+	Update author Email address (yes, again).
+
+	Make better use of "const" throughout program, especially for the
+	pinmap structs.
+
+	Update all source code headers' copyright years.
+
+
+20090703
+	Fix SMBus slave address addressing bug.  SMBus slave addresses
+	are actually shifted to the left 1 bit (e.g. 0x2f becomes 0x5e),
+	so that the LSB is always 0.  As of 2009/05/15, a commit was made
+	to RELENG_7 to ensure that the LSB is always 0; bsdhwmon would
+	return invalid results if run on a RELENG_7 kernel built after
+	that date.  See commit 1.38.2.1 here:
+	http://www.freebsd.org/cgi/cvsweb.cgi/src/sys/dev/smbus/smb.c
+
+	Add code for handling error condition where ioctl() returns -1;
+	bail out entirely when this happens, displaying errno too.
+
+	Update author Email address.
+
+
+20081107
+	Extend SMBIOS checking; previously we used smbios.planar.model,
+	now we use both smbios.planar.maker AND smbios.planar.model.  This
+	adds extra granularity in the case two different motherboard manu-
+	facturers share the same "maker" string.
+
+	Change from MAXPATHLEN to KENV_MVALLEN for kenv(2) strings, since
+	that appears to be the true maximum length.
+
+	Change function prototypes to include variable names; easier
+	cross-referencing when others look at the source.
+
+	New board: Supermicro X7SBA.
+
+
+20081005
+	Initial public release.
+
+
+
+$Id: CHANGES,v 1.22 2014/08/12 06:01:10 jdc Exp $

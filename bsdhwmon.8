@@ -1,0 +1,226 @@
+.ig
+$Id: bsdhwmon.8,v 1.8 2014/12/31 18:43:11 jdc Exp $
+
+Copyright (C) 2008-2015 Jeremy Chadwick. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL AUTHOR OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+..
+.Dd February 27, 2010
+.Dt BSDHWMON 8
+.Os
+.Sh NAME
+.Nm bsdhwmon
+.Nd hardware sensor monitoring utility
+.Sh SYNOPSIS
+.Nm
+.Op Fl hlv
+.Op Fl f Ar device
+.Sh DESCRIPTION
+.Nm
+is a user-land application which communicates via SMBus with hardware
+monitoring ICs on motherboards.  Many different pieces of information
+can be returned, but the most common are fan RPMs, processor and system
+temperatures, and motherboard voltages.  All data is sent to standard
+output.
+.Pp
+At this time,
+.Nm
+supports a multitude of Winbond hardware monitoring ICs, predominantly
+on Supermicro motherboards.
+.Pp
+The options are as follows:
+.Pp
+.Bl -tag -width indent
+.It Fl c
+Output data in a comma-delimited format.  Sensor name, its value, and
+the associated unit (V for volts, C for Celsius, RPM for rotations per
+minute, etc.) are individual parameters.
+.It Fl f Ar device
+Specify an alternate SMBus device.  Default is
+.Pa /dev/smb0 .
+.It Fl l
+List motherboards supported by
+.Nm .
+.It Fl h
+Help or usage syntax.
+.It Fl v
+Increase verbosity (includes debugging output).
+.Sh REQUIREMENTS
+.Nm
+requires a few hardware and software features to function:
+.Bl -enum
+.It
+A system BIOS that provides a SMBIOS table.  Specifically, the
+existence of the
+.Cd smbios.planar.maker
+and
+.Cd smbios.planar.product
+.Xr kenv 2
+kernel environment strings.  You can verify the existence of these
+variables by using
+.Xr kenv 1 .
+.It
+.Cd "device smb"
+built into your kernel or loaded using
+.Xr kldload 8 ,
+.It
+.Cd "device smbus"
+built into your kernel or loaded using
+.Xr kldload 8 ,
+.It
+An appropriate SMBus chipset driver, such as
+.Xr amdsmb 4 ,
+.Xr ichsmb 4 ,
+or
+.Xr nfsmb 4 ,
+built into your kernel or loaded via
+.Xr kldload 8 .
+.El
+.Pp
+Failure to meet all of the above requirements will result in
+.Nm
+not functioning.
+.Sh OUTPUT
+.Nm
+attempts to mimic output formatting and sensor strings to that of
+the BIOS's Hardware Monitoring menu option (if available).  However,
+due to limited hardware availability and user beta testing, some
+strings may not match the BIOS exactly (such as "PECI Agent" being
+replaced with "CPU Core").
+.Pp
+For example, a Supermicro PDSMi+ motherboard might output something
+like this:
+.Pp
+.Bd -literal -offset indent
+CPU Temperature            34 C
+System Temperature         36 C
+FAN1                        0 RPM
+FAN2                        0 RPM
+FAN3                        0 RPM
+FAN4                     2000 RPM
+FAN5                     1527 RPM
+FAN6                     1785 RPM
+Vcore                   1.198 V
++1.5V                   1.540 V
+-12V                  -12.288 V
+Vdimm                   1.824 V
++3.3V                   3.344 V
++12V                   12.000 V
+5Vsb                    5.046 V
+5VDD                    4.974 V
+P_VTT                   1.206 V
+Vbat                    3.184 V
+.Ed
+.Pp
+While an older Supermicro P8SC8 might output this:
+.Pp
+.Bd -literal -offset indent
+CPU Temperature            33 C
+System Temperature         37 C
+FAN1                     4963 RPM
+FAN2                        0 RPM
+FAN3                        0 RPM
+FAN4                        0 RPM
+FAN5                        0 RPM
+Processor Vcore(V)      1.360 V
+3.3V Vcc(V)             3.320 V
+5V Vcc(V)               3.044 V
+-12V Vcc(V)           -12.288 V
+12V Vcc(V)             12.432 V
+5VSB                    4.896 V
+VBAT                    3.104 V
+.Ed
+.Pp
+Slight differentials in sensor values (e.g. a few degrees, voltage
+fluctuations, or RPM variance) are normal.  Operating systems often
+make use of system and processor which may halt processors while idling
+(e.g. x86 "HLT" opcode), or make use of C1 through C4 power-saving
+states;
+.Xr powerd 8
+on FreeBSD is known to do this.  System BIOSes are known to offer the
+ability to throttle fan speed based on load.  Please refer to your
+System User Manual for details.
+.Pp
+Large/severe differences between what the system BIOS and
+.Nm
+reports should be reported as a bug (e.g. -12.107 V shown in the BIOS,
+while
+.Nm
+reports +37.000 V).
+.Sh EXIT STATUS
+.Ex -std
+.Sh SEE ALSO
+.Xr kenv 1 ,
+.Xr amdsmb 4 ,
+.Xr ichsmb 4 ,
+.Xr nfsmb 4 ,
+.Xr smb 4 ,
+.Xr smbus 4 ,
+.Xr kldload 8
+.Sh AUTHOR
+.An Jeremy Chadwick Aq jdc@koitsu.org
+.Sh BUGS
+Some Supermicro systems using the Winbond W83792D chipset may report
+incorrect +5V voltages; the Supermicro P8SC8 and P8SCT motherboards are
+such examples.  This is caused by a faulty formula used to calculate voltages
+from IC registers.  The formulas used are not officially documented, and the
+actual circuitry (resistors, etc.) tied to the pins on the Winbond chip do
+not match what Winbond used in their documentation.  Formula documentation
+has been requested of Supermicro, but no response has been received at this
+time.
+.Pp
+There has been an isolated report of a Supermicro P8SCi system occasionally
+reporting extremely high RPMs (in the tens of thousands) for some fans.
+The reason for this is unknown, but the values being returned from the
+Winbond chipset do appear correct.  If you're experiencing this bug, please
+get in contact with the author.
+.Sh CONTRIBUTORS
+The following individuals have made contributions to
+.Nm , either by helping with the code, testing the software, or recommending
+features:
+.Pp
+.Bl -tag -offset -width indent -compact
+.It Tony Allevato
+.It Mike Andrews
+.It Alan Bryan
+.It Gergely Czuczy
+.It Michael Fuckner
+.It M. Giegerich
+.It Matthew Herzog
+.It Dan Naumov
+.It Billy Newsom
+.It Daniel O'Connor
+.It Alexey V. Panfilov
+.It James Perry
+.It Jim Pingle
+.It Patrick Proniewski
+.It Matt Reimer
+.It Larry Rosenman
+.It Ulrich Spoerlein
+.It Evren Yurtesen
+.El
+.Pp
+Additional thanks to SHIMIZU Yoshifumi, author of mbmon, for
+providing BSD hardware monitoring support on older x86 hardware,
+and to the Linux lm_sensors project, for providing an unofficial
+secondary source of IC documentation and details of chip quirks.
