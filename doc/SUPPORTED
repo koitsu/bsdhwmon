@@ -64,6 +64,3 @@ IBM System x3250	IBM		M31ip			Unknown
 [1]: Refers to the kenv string "smbios.planar.X" where X is maker, product,
 or whatever is specified.
 
-
-
-$Id: SUPPORTED,v 1.3 2012/12/22 08:10:15 jdc Exp $

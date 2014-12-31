@@ -32,6 +32,3 @@ user had his fan RPM configuration in the system BIOS set to
 speed).  This could be a bug in the Winbond chipset, but I simply
 don't know.
 
-
-
-$Id: BUGS,v 1.4 2012/10/23 13:11:08 jdc Exp $

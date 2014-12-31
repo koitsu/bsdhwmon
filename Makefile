@@ -1,4 +1,3 @@
-# $Id: Makefile,v 1.17 2014/12/31 18:43:11 jdc Exp $
 #
 # Copyright (C) 2008-2015 Jeremy Chadwick. All rights reserved.
 # 

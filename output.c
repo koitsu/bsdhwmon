@@ -1,7 +1,4 @@
 /*
-$Id: output.c,v 1.20 2014/12/31 18:43:11 jdc Exp $
-*/
-/*
 Copyright (C) 2008-2015 Jeremy Chadwick. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

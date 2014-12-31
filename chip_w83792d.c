@@ -1,7 +1,4 @@
 /*
-$Id: chip_w83792d.c,v 1.10 2014/12/31 18:43:11 jdc Exp $
-*/
-/*
 Copyright (C) 2008-2015 Jeremy Chadwick. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

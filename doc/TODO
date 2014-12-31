@@ -16,6 +16,3 @@ Long-term TODO
   appears to use the Winbond W83782D, and see if they'll provide SMBus
   documentation (if it supports tie-ins).
 
-
-
-$Id: TODO,v 1.4 2013/04/10 09:51:00 jdc Exp $
