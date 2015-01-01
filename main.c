@@ -80,6 +80,10 @@ extern struct board	boardlist;
 /*
  * Global variables
  */
+/*
+ * smbfd needs to be pre-initialised to -1 for proper error handling
+ * scenarios during start-up (see comment near top of main())
+ */
 static char	ibuf[SMB_MAXBLOCKSIZE];			/* Buffer for SMBus data reads */
 static int	smbfd = -1;				/* File descriptor for /dev/smbXXX */
 static int	comma_output = 0;			/* Command line flag "-c" */
@@ -244,6 +248,13 @@ main(int argc, char *argv[])
 	int ch;
 	int ret = 1;
 	int exitcode = EX_OK;
+	/*
+	 * product, maker, and sensors pointers need to be pre-assigned
+	 * to NULL.  If any of the "startup" routines fail (e.g. goto
+	 * finish), free() will get called on them.  free(NULL) is harmless,
+	 * while free() on something that's uninitialised (usually contains
+	 * a random value) may result in errors and other problems.
+	 */
 	char *product = NULL;
 	char *maker = NULL;
 	struct sensors *sdata = NULL;
