@@ -1,4 +1,9 @@
-20151231
+20150102
+	Fix some groff/mdoc errors in bsdhwmon.8.
+
+	Fix previous timestamp in doc/CHANGES (20141231, not 20151231).
+
+20141231
 	Migrate to github.com instead of my own local CVS repository.
 
 20140811
