@@ -31,13 +31,15 @@ CFLAGS+=	-Werror -Wall -Wformat-security -fno-inline
 
 OBJS=	main.o boards.o output.o chip_w83792d.o chip_w83793g.o chip_x6dva.o
 
-all: bsdhwmon bsdhwmon.8.txt
+all: bsdhwmon man
 
 bsdhwmon: ${OBJS}
 	${CC} ${CFLAGS} -o ${.TARGET} ${.ALLSRC}
 
 ${OBJS}: global.h
 	${CC} ${CFLAGS} -c ${.PREFIX}.c
+
+man: bsdhwmon.8.txt
 
 bsdhwmon.8.txt: bsdhwmon.8
 	troff -Tascii -mman bsdhwmon.8 | grotty -c -b -o -u > ${.TARGET}
