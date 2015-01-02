@@ -24,4 +24,7 @@ At this time, only a subset of Supermicro hardware is supported.  For an officia
 * FreeBSD 9.x (RELENG\_9)
 
 ## Usage
-Please see the [bsdhwmon man page](bsdhwmon.8.txt) for further information.
+Please see the [bsdhwmon man page](bsdhwmon.8.txt) for all command-line flags and usage details.
+
+## Author
+* Jeremy Chadwick <jdc@koitsu.org>
