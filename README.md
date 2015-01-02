@@ -26,5 +26,8 @@ At this time, only a subset of Supermicro hardware is supported.  For an officia
 ## Usage
 Please see the [bsdhwmon man page](bsdhwmon.8.txt) for all command-line flags and usage details.
 
+## Support Requests
+For bug reports, enhancements, or general support, please use the [GitHub Issues](https://github.com/koitsu/bsdhwmon/issues) interface.
+
 ## Author
 * Jeremy Chadwick <jdc@koitsu.org>
