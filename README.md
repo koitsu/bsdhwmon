@@ -30,4 +30,4 @@ Please see the [bsdhwmon man page](bsdhwmon.8.txt) for all command-line flags an
 For bug reports, enhancements, or general support, please use the [GitHub Issues](https://github.com/koitsu/bsdhwmon/issues) interface.
 
 ## Author
-* Jeremy Chadwick <jdc@koitsu.org>
+* Jeremy Chadwick &lt;jdc@koitsu.org&gt;
