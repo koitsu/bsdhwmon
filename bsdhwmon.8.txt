@@ -1,0 +1,163 @@
+BSDHWMON(8)             FreeBSD System Manager's Manual            BSDHWMON(8)
+
+NAME
+     bsdhwmon -- hardware sensor monitoring utility
+
+SYNOPSIS
+     bsdhwmon [-hlv] [-f device]
+
+DESCRIPTION
+     bsdhwmon is a user-land application which communicates via SMBus with
+     hardware monitoring ICs on motherboards.  Many different pieces of infor-
+     mation can be returned, but the most common are fan RPMs, processor and
+     system temperatures, and motherboard voltages.  All data is sent to stan-
+     dard output.
+
+     At this time, bsdhwmon supports a multitude of Winbond hardware monitor-
+     ing ICs, predominantly on Supermicro motherboards.
+
+     The options are as follows:
+
+     -c      Output data in a comma-delimited format.  Sensor name, its value,
+             and the associated unit (V for volts, C for Celsius, RPM for
+             rotations per minute, etc.) are individual parameters.
+
+     -f device
+             Specify an alternate SMBus device.  Default is /dev/smb0.
+
+     -l      List motherboards supported by bsdhwmon.
+
+     -h      Help or usage syntax.
+
+     -v      Increase verbosity (includes debugging output).
+
+REQUIREMENTS
+     bsdhwmon requires a few hardware and software features to function:
+
+     1.   A system BIOS that provides a SMBIOS table.  Specifically, the exis-
+          tence of the smbios.planar.maker and smbios.planar.product kenv(2)
+          kernel environment strings.  You can verify the existence of these
+          variables by using kenv(1).
+
+     2.   device smb built into your kernel or loaded using kldload(8),
+
+     3.   device smbus built into your kernel or loaded using kldload(8),
+
+     4.   An appropriate SMBus chipset driver, such as amdsmb(4), ichsmb(4),
+          or nfsmb(4), built into your kernel or loaded via kldload(8).
+
+     Failure to meet all of the above requirements will result in bsdhwmon not
+     functioning.
+
+OUTPUT
+     bsdhwmon attempts to mimic output formatting and sensor strings to that
+     of the BIOS's Hardware Monitoring menu option (if available).  However,
+     due to limited hardware availability and user beta testing, some strings
+     may not match the BIOS exactly (such as "PECI Agent" being replaced with
+     "CPU Core").
+
+     For example, a Supermicro PDSMi+ motherboard might output something like
+     this:
+
+           CPU Temperature            34 C
+           System Temperature         36 C
+           FAN1                        0 RPM
+           FAN2                        0 RPM
+           FAN3                        0 RPM
+           FAN4                     2000 RPM
+           FAN5                     1527 RPM
+           FAN6                     1785 RPM
+           Vcore                   1.198 V
+           +1.5V                   1.540 V
+           -12V                  -12.288 V
+           Vdimm                   1.824 V
+           +3.3V                   3.344 V
+           +12V                   12.000 V
+           5Vsb                    5.046 V
+           5VDD                    4.974 V
+           P_VTT                   1.206 V
+           Vbat                    3.184 V
+
+     While an older Supermicro P8SC8 might output this:
+
+           CPU Temperature            33 C
+           System Temperature         37 C
+           FAN1                     4963 RPM
+           FAN2                        0 RPM
+           FAN3                        0 RPM
+           FAN4                        0 RPM
+           FAN5                        0 RPM
+           Processor Vcore(V)      1.360 V
+           3.3V Vcc(V)             3.320 V
+           5V Vcc(V)               3.044 V
+           -12V Vcc(V)           -12.288 V
+           12V Vcc(V)             12.432 V
+           5VSB                    4.896 V
+           VBAT                    3.104 V
+
+     Slight differentials in sensor values (e.g. a few degrees, voltage fluc-
+     tuations, or RPM variance) are normal.  Operating systems often make use
+     of system and processor which may halt processors while idling (e.g. x86
+     "HLT" opcode), or make use of C1 through C4 power-saving states;
+     powerd(8) on FreeBSD is known to do this.  System BIOSes are known to
+     offer the ability to throttle fan speed based on load.  Please refer to
+     your System User Manual for details.
+
+     Large/severe differences between what the system BIOS and bsdhwmon
+     reports should be reported as a bug (e.g. -12.107 V shown in the BIOS,
+     while bsdhwmon reports +37.000 V).
+
+EXIT STATUS
+     The bsdhwmon utility exits 0 on success, and >0 if an error occurs.
+
+SEE ALSO
+     kenv(1), amdsmb(4), ichsmb(4), nfsmb(4), smb(4), smbus(4), kldload(8)
+
+AUTHOR
+     Jeremy Chadwick <jdc@koitsu.org>
+
+BUGS
+     Some Supermicro systems using the Winbond W83792D chipset may report
+     incorrect +5V voltages; the Supermicro P8SC8 and P8SCT motherboards are
+     such examples.  This is caused by a faulty formula used to calculate
+     voltages from IC registers.  The formulas used are not officially docu-
+     mented, and the actual circuitry (resistors, etc.) tied to the pins on
+     the Winbond chip do not match what Winbond used in their documentation.
+     Formula documentation has been requested of Supermicro, but no response
+     has been received at this time.
+
+     There has been an isolated report of a Supermicro P8SCi system occasion-
+     ally reporting extremely high RPMs (in the tens of thousands) for some
+     fans.  The reason for this is unknown, but the values being returned from
+     the Winbond chipset do appear correct.  If you're experiencing this bug,
+     please get in contact with the author.
+
+CONTRIBUTORS
+     The following individuals have made contributions to bsdhwmon, either by
+     helping with the code, testing the software, or recommending features:
+
+           Tony Allevato
+           Mike Andrews
+           Alan Bryan
+           Gergely Czuczy
+           Michael Fuckner
+           M. Giegerich
+           Matthew Herzog
+           Dan Naumov
+           Billy Newsom
+           Daniel O'Connor
+           Alexey V. Panfilov
+           James Perry
+           Jim Pingle
+           Patrick Proniewski
+           Matt Reimer
+           Larry Rosenman
+           Ulrich Spoerlein
+           Evren Yurtesen
+
+     Additional thanks to SHIMIZU Yoshifumi, author of mbmon, for providing
+     BSD hardware monitoring support on older x86 hardware, and to the Linux
+     lm_sensors project, for providing an unofficial secondary source of IC
+     documentation and details of chip quirks.
+
+FreeBSD 9.3                    February 27, 2010                   FreeBSD 9.3
