@@ -18,6 +18,8 @@ DESCRIPTION
 
      The options are as follows:
 
+     -J      Output data in a JSON-compliant format.
+
      -c      Output data in a comma-delimited format.  Sensor name, its value,
              and the associated unit (V for volts, C for Celsius, RPM for
              rotations per minute, etc.) are individual parameters.
@@ -160,4 +162,4 @@ CONTRIBUTORS
      lm_sensors project, for providing an unofficial secondary source of IC
      documentation and details of chip quirks.
 
-FreeBSD 9.3                    February 27, 2010                   FreeBSD 9.3
+FreeBSD 9.3                     January 2, 2015                    FreeBSD 9.3
