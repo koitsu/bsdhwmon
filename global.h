@@ -107,23 +107,23 @@ enum fans_e {
  * It's also used in the boards struct; see further down...
  */
 struct pinmap {
-	uint16_t	index;		/* One of the above enums */
+	size_t		index;		/* One of the above enums */
 	const char	*label;		/* Name of pinmap (ASCII) */
 };
 
 struct voltages_data {
-	uint16_t	index;		/* One of the above enums */
+	size_t		index;		/* One of the above enums */
 	double		value;
 };
 
 struct temps_data {
-	uint16_t	index;		/* One of the above enums */
-	uint16_t	value;
+	size_t		index;		/* One of the above enums */
+	size_t		value;
 };
 
 struct fans_data {
-	uint16_t	index;		/* One of the above enums */
-	uint16_t	value;
+	size_t		index;		/* One of the above enums */
+	size_t		value;
 };
 
 struct sensors {
@@ -135,7 +135,7 @@ struct sensors {
 struct board {
 	const char		*maker;
 	const char		*product;
-	uint16_t		chip;
+	size_t			chip;
 	int			slave;
 	const struct pinmap	*voltages;
 	const struct pinmap	*temps;

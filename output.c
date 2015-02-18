@@ -34,7 +34,7 @@ SUCH DAMAGE.
 /*
  * Function prototypes
  */
-const char *	get_chip_string(const uint16_t);
+const char *	get_chip_string(const size_t);
 void		list_models(const struct board *);
 void		sensors_output(const struct board *, const struct sensors *);
 void		sensors_output_delim(const struct board *, const struct sensors *);
@@ -47,7 +47,7 @@ extern void	VERBOSE(const char *, ...);
 
 
 /*
- * get_chip_string(uint16_t idx)
+ * get_chip_string(size_t idx)
  *
  * idx = index value; see "chips_e" enum in global.h
  *
@@ -55,7 +55,7 @@ extern void	VERBOSE(const char *, ...);
  * monitoring chip model.
  */
 const char *
-get_chip_string(const uint16_t idx)
+get_chip_string(const size_t idx)
 {
 	switch (idx) {
 		case CUSTOM_X6DVA:	return ("X6DVA/X6DVL/X6DAL");
@@ -77,7 +77,7 @@ get_chip_string(const uint16_t idx)
 void
 list_models(const struct board *b)
 {
-	uint16_t i = 0;
+	size_t i = 0;
 
 	VERBOSE("list_models(b = %p)\n", b);
 
@@ -124,15 +124,15 @@ list_models(const struct board *b)
 void
 sensors_output(const struct board *b, const struct sensors *s)
 {
-	uint16_t i;
-	uint16_t enum_index;
+	size_t i;
+	size_t enum_index;
 
 	VERBOSE("sensors_output(b = %p, s = %p)\n", b, s);
 
 	for (i = 0; b->temps[i].label != NULL; ++i) {
 		enum_index = b->temps[i].index;
 
-		printf("%-20s %8u C\n",
+		printf("%-20s %8zu C\n",
 			b->temps[i].label,
 			s->temps[enum_index].value
 		);
@@ -141,7 +141,7 @@ sensors_output(const struct board *b, const struct sensors *s)
 	for (i = 0; b->fans[i].label != NULL; ++i) {
 		enum_index = b->fans[i].index;
 
-		printf("%-20s %8u RPM\n",
+		printf("%-20s %8zu RPM\n",
 			b->fans[i].label,
 			s->fans[enum_index].value
 		);
@@ -163,15 +163,15 @@ sensors_output(const struct board *b, const struct sensors *s)
 void
 sensors_output_delim(const struct board *b, const struct sensors *s)
 {
-	uint16_t i;
-	uint16_t enum_index;
+	size_t i;
+	size_t enum_index;
 
 	VERBOSE("sensors_output_delim(b = %p, s = %p)\n", b, s);
 
 	for (i = 0; b->temps[i].label != NULL; ++i) {
 		enum_index = b->temps[i].index;
 
-		printf("%s,%u,C\n",
+		printf("%s,%zu,C\n",
 			b->temps[i].label,
 			s->temps[enum_index].value
 		);
@@ -180,7 +180,7 @@ sensors_output_delim(const struct board *b, const struct sensors *s)
 	for (i = 0; b->fans[i].label != NULL; ++i) {
 		enum_index = b->fans[i].index;
 
-		printf("%s,%u,RPM\n",
+		printf("%s,%zu,RPM\n",
 			b->fans[i].label,
 			s->fans[enum_index].value
 		);
@@ -202,8 +202,8 @@ sensors_output_delim(const struct board *b, const struct sensors *s)
 void
 sensors_output_json(const struct board *b, const struct sensors *s)
 {
-	uint16_t i;
-	uint16_t enum_index;
+	size_t i;
+	size_t enum_index;
 
 	VERBOSE("sensors_output_json(b = %p, s = %p)\n", b, s);
 
@@ -213,7 +213,7 @@ sensors_output_json(const struct board *b, const struct sensors *s)
 	for (i = 0; b->temps[i].label != NULL; ++i) {
 		enum_index = b->temps[i].index;
 
-		printf("\t\t\"%s\": \"%u C\"%s\n",
+		printf("\t\t\"%s\": \"%zu C\"%s\n",
 			b->temps[i].label,
 			s->temps[enum_index].value,
 			(b->temps[i+1].label == NULL ? "" : ",")
@@ -225,7 +225,7 @@ sensors_output_json(const struct board *b, const struct sensors *s)
 	for (i = 0; b->fans[i].label != NULL; ++i) {
 		enum_index = b->fans[i].index;
 
-		printf("\t\t\"%s\": \"%u RPM\"%s\n",
+		printf("\t\t\"%s\": \"%zu RPM\"%s\n",
 			b->fans[i].label,
 			s->fans[enum_index].value,
 			(b->fans[i+1].label == NULL ? "" : ",")

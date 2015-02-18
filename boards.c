@@ -349,7 +349,7 @@ extern void VERBOSE(const char *, ...);
 /*
  * External functions (output.c)
  */
-extern const char *get_chip_string(const uint16_t);
+extern const char *get_chip_string(const size_t);
 
 
 /*
@@ -370,8 +370,8 @@ extern const char *get_chip_string(const uint16_t);
 struct board *
 board_lookup(const char *maker, const char *product)
 {
-	uint16_t bidx = 0;
-	uint16_t i;
+	size_t bidx = 0;
+	size_t i;
 	struct board *b;
 
 	VERBOSE("board_lookup(maker = %p, product = %p)\n", maker, product);
