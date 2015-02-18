@@ -81,22 +81,14 @@ list_models(const struct board *b)
 
 	VERBOSE("list_models(b = %p)\n", b);
 
-	printf("maker          product                Chip type           Slave addr.\n");
+	printf("maker          product                chip type           slave addr\n");
 	printf("-------------  ---------------------  ------------------  -----------\n");
 
-	while (1) {
-		/*
-		 * We're at the end of the structure...
-		 */
-		if (b[i].maker == NULL) {
-			break;
-		}
-
+	while (b[i].maker != NULL) {
 		/*
 		 * For boards with multiple SMBus slave addresses or custom
-		 * methods, output something a little more sane here
-		 *
-		 * Otherwise, output the SMBus Slave address as expected.
+		 * methods, show "Custom" rather than the SMBus slave
+		 * address.
 		 */
 		if (b[i].slave == -1) {
 			printf("%-13s  %-21s  %-18s  Custom\n",
