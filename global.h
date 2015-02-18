@@ -123,7 +123,7 @@ struct temps_data {
 
 struct fans_data {
 	size_t		index;		/* One of the above enums */
-	size_t		value;
+	uint32_t	value;
 };
 
 struct sensors {

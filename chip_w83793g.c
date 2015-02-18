@@ -25,12 +25,13 @@ SUCH DAMAGE.
 */
 
 #include <string.h>
+#include <inttypes.h>
 #include "global.h"
 
 /*
  * Function prototypes
  */
-static uint16_t	w83793g_rpmconv(const uint16_t);
+static uint32_t	w83793g_rpmconv(const uint16_t);
 static uint8_t	w83793g_tempadj(const uint8_t);
 int		w83793g_main(int, const uint8_t, struct sensors *);
 
@@ -68,10 +69,10 @@ extern void	write_byte(int, uint8_t, const char, const char);
  * Returns the current revolutions-per-minute (RPM) of the fan.  If
  * the fan is disconnected, or count is 0, return 0.
  */
-static uint16_t
+static uint32_t
 w83793g_rpmconv(const uint16_t count)
 {
-	uint16_t r = 0;
+	uint32_t r = 0;
 
 	VERBOSE("w83793g_rpmconv(count = 0x%04x)\n", count);
 
@@ -79,7 +80,7 @@ w83793g_rpmconv(const uint16_t count)
 		r = 1350000 / count;
 	}
 
-	VERBOSE("w83793g_rpmconv() returning 0x%04x\n", r);
+	VERBOSE("w83793g_rpmconv() returning 0x%08" PRIx32 "\n", r);
 	return (r);
 }
 

@@ -27,6 +27,7 @@ SUCH DAMAGE.
 #include <stdio.h>
 #include <strings.h>
 #include <stdlib.h>
+#include <inttypes.h>
 #include <sysexits.h>
 
 #include "global.h"
@@ -133,7 +134,7 @@ sensors_output(const struct board *b, const struct sensors *s)
 	for (i = 0; b->fans[i].label != NULL; ++i) {
 		enum_index = b->fans[i].index;
 
-		printf("%-20s %8zu RPM\n",
+		printf("%-20s %8" PRIu32 " RPM\n",
 			b->fans[i].label,
 			s->fans[enum_index].value
 		);
@@ -172,7 +173,7 @@ sensors_output_delim(const struct board *b, const struct sensors *s)
 	for (i = 0; b->fans[i].label != NULL; ++i) {
 		enum_index = b->fans[i].index;
 
-		printf("%s,%zu,RPM\n",
+		printf("%s,%" PRIu32 ",RPM\n",
 			b->fans[i].label,
 			s->fans[enum_index].value
 		);
@@ -217,7 +218,7 @@ sensors_output_json(const struct board *b, const struct sensors *s)
 	for (i = 0; b->fans[i].label != NULL; ++i) {
 		enum_index = b->fans[i].index;
 
-		printf("\t\t\"%s\": \"%zu RPM\"%s\n",
+		printf("\t\t\"%s\": \"%" PRIu32 " RPM\"%s\n",
 			b->fans[i].label,
 			s->fans[enum_index].value,
 			(b->fans[i+1].label == NULL ? "" : ",")

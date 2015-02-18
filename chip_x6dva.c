@@ -44,7 +44,7 @@ extern void	write_byte(int, uint8_t, const char, const char);
  * NOTE: Yes, these are needed!
  */
 extern uint8_t	w83792d_divisor(const uint8_t);
-extern uint16_t	w83792d_rpmconv(const uint8_t, const uint8_t);
+extern uint32_t	w83792d_rpmconv(const uint8_t, const uint8_t);
 
 
 /*

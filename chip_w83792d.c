@@ -25,13 +25,14 @@ SUCH DAMAGE.
 */
 
 #include <string.h>
+#include <inttypes.h>
 #include "global.h"
 
 /*
  * Function prototypes
  */
 uint8_t		w83792d_divisor(const uint8_t);
-uint16_t	w83792d_rpmconv(const uint8_t, const uint8_t);
+uint32_t	w83792d_rpmconv(const uint8_t, const uint8_t);
 int		w83792d_main(int, const uint8_t, struct sensors *);
 
 /*
@@ -92,10 +93,10 @@ w83792d_divisor(const uint8_t raw)
  * Returns the current revolutions-per-minute (RPM) of the fan.  If
  * the fan is disconnected, or either count or div are zero, return 0.
  */
-uint16_t
+uint32_t
 w83792d_rpmconv(const uint8_t count, const uint8_t div)
 {
-	uint16_t r = 0;
+	uint32_t r = 0;
 
 	VERBOSE("w83792d_rpmconv(count = 0x%02x, div = %u)\n",
 		count, div);
@@ -104,7 +105,7 @@ w83792d_rpmconv(const uint8_t count, const uint8_t div)
 		r = 1350000 / (count * div);
 	}
 
-	VERBOSE("w83792d_rpmconv() returning 0x%04x\n", r);
+	VERBOSE("w83792d_rpmconv() returning 0x%08" PRIx32 "\n", r);
 	return (r);
 }
 
