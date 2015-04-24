@@ -35,6 +35,7 @@ bsdhwmon cannot support the following motherboards:
 
 board/system		reason
 ----------------------	-------------------------------------------------------
+Celestix MSA 2000i      Lacks SMBus interface; LPC I/O only
 Supermicro 370SSE	No hardware monitoring IC available
 Supermicro C2SBA	Lacks SMBus interface; LPC I/O only
 Supermicro C2SBA+	Lacks SMBus interface; LPC I/O only
