@@ -3,13 +3,13 @@ Supermicro X7SBL
 Supermicro X7SBL-LN1
 Supermicro X7SBL-LN2
 -------------------------------------------------------
-There are physically two Supermicro chips on this board: a Winbond Winbond
-W83627HF-AW, and a Winbond W83793G.  The W83627HF-AW is used solely for its
-Super I/O capabilities, while the W83793G is used solely for H/W monitoring.
-The W83627HF-AW sits at slave address 0x2d, and the W83793G at 0x2f.
+There are physically two chips on this board: a Winbond W83627HF-AW, and a
+Winbond W83793G.  The W83627HF-AW is used solely for its Super I/O
+capabilities, while the W83793G is used solely for H/W monitoring.  The
+W83627HF-AW sits at slave address 0x2d, and the W83793G at 0x2f.
 
 Supermicro's website states that the board contains a W83627HF, which is
-incorrect; it truly is a W83627HF-AW.
+incorrect -- it truly is a W83627HF-AW.
 ==============================================================================
 
 

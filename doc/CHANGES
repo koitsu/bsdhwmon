@@ -1,4 +1,6 @@
-20150102
+20150424
+	Fix typos and formatting mistakes in doc/BOARDS.
+
 	Fix some groff/mdoc errors in bsdhwmon.8.
 
 	Fix previous timestamp in doc/CHANGES (20141231, not 20151231).
