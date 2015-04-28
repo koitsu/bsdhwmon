@@ -63,9 +63,9 @@ extern void	list_models(struct board *);
 /*
  * External functions (chip_XXX.c)
  */
-extern int	w83627hf_main(int, int, struct sensors *);
-extern int	w83792d_main(int, int, struct sensors *);
-extern int	w83793g_main(int, int, struct sensors *);
+extern int	w83627hf_main(int, const int, struct sensors *);
+extern int	w83792d_main(int, const int, struct sensors *);
+extern int	w83793g_main(int, const int, struct sensors *);
 extern int	x6dva_main(int, struct sensors *);
 
 /*
