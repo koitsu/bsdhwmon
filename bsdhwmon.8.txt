@@ -132,7 +132,8 @@ BUGS
      ally reporting extremely high RPMs (in the tens of thousands) for some
      fans.  The reason for this is unknown, but the values being returned from
      the Winbond chipset do appear correct.  If you're experiencing this bug,
-     please get in contact with the author.
+     please get in contact with the author.  Git commit ad3bbad may have rec-
+     tified this bug.
 
 CONTRIBUTORS
      The following individuals have made contributions to bsdhwmon, either by
@@ -149,7 +150,7 @@ CONTRIBUTORS
            Billy Newsom
            Daniel O'Connor
            Alexey V. Panfilov
-           James Perry
+           Jim Perry
            Jim Pingle
            Patrick Proniewski
            Matt Reimer
