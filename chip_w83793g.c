@@ -33,14 +33,18 @@ SUCH DAMAGE.
  */
 static uint32_t	w83793g_rpmconv(const uint16_t);
 static uint8_t	w83793g_tempadj(const uint8_t);
-int		w83793g_main(int, const uint8_t, struct sensors *);
+int		w83793g_main(int, const int, struct sensors *);
 
 /*
  * External functions (main.c)
  */
 extern void	VERBOSE(const char *, ...);
-extern uint8_t	read_byte(int, uint8_t, const char);
-extern void	write_byte(int, uint8_t, const char, const char);
+
+/*
+ * External functions (smbios_io_*.c)
+ */
+extern uint8_t	read_byte(int, int, const char);
+extern void	write_byte(int, int, const char, const char);
 
 
 /*
@@ -131,7 +135,7 @@ w83793g_tempadj(const uint8_t raw)
 
 
 /*
- * w83793g_main(int fd, uint8_t slave, struct sensors *s)
+ * w83793g_main(int fd, const int slave, struct sensors *s)
  *
  *    fd = Descriptor return from open() on a /dev/smbX device
  * slave = SMBus slave address; see boardlist[] in boards.c
@@ -149,7 +153,7 @@ w83793g_tempadj(const uint8_t raw)
  * below comments, for quick reference/debugging.
  */
 int
-w83793g_main(int fd, const uint8_t slave, struct sensors *s)
+w83793g_main(int fd, const int slave, struct sensors *s)
 {
 	static u_char regmap[256];
 	uint8_t i;

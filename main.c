@@ -24,12 +24,10 @@ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
 */
 
-#include <sys/param.h>
-#include <dev/smbus/smb.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <sys/param.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
@@ -48,8 +46,6 @@ SUCH DAMAGE.
  */
 void		VERBOSE(const char *, ...);
 static void	USAGE(void);
-uint8_t		read_byte(int, uint8_t, const char);
-void		write_byte(int, uint8_t, const char, const char);
 
 /*
  * External functions (boards.c)
@@ -67,9 +63,9 @@ extern void	list_models(struct board *);
 /*
  * External functions (chip_XXX.c)
  */
-extern int	w83627hf_main(int, uint8_t, struct sensors *);
-extern int	w83792d_main(int, uint8_t, struct sensors *);
-extern int	w83793g_main(int, uint8_t, struct sensors *);
+extern int	w83627hf_main(int, int, struct sensors *);
+extern int	w83792d_main(int, int, struct sensors *);
+extern int	w83793g_main(int, int, struct sensors *);
 extern int	x6dva_main(int, struct sensors *);
 
 /*
@@ -84,7 +80,6 @@ extern struct board	boardlist;
  * smbfd needs to be pre-initialised to -1 for proper error handling
  * scenarios during start-up (see comment near top of main())
  */
-static char	ibuf[SMB_MAXBLOCKSIZE];			/* Buffer for SMBus data reads */
 static int	smbfd = -1;				/* File descriptor for /dev/smbXXX */
 static int	comma_output = 0;			/* Command line flag "-c" */
 static int	json_output = 0;			/* Command line flag "-J" */
@@ -128,115 +123,6 @@ USAGE(void)
 	printf("http://bsdhwmon.koitsu.org/\n");
 	printf("Report bugs to <jdc@koitsu.org>\n");
 	exit(EX_USAGE);
-}
-
-
-/*
- * read_byte(int fd, uint8_t slave, const char idxreg)
- *
- *     fd = Descriptor return from open() on a /dev/smbX device
- *  slave = SMBus slave address; see boardlist[] in boards.c
- * idxreg = Index/register to read
- * 
- * Reads a byte off off the SMBus via ioctl().  See smb(4) for details.
- *
- * Returns byte read.  On failure, returns -1.
- */
-uint8_t
-read_byte(int fd, uint8_t slave, const char idxreg)
-{
-	struct smbcmd c;
-
-	memset(&c, 0, sizeof(struct smbcmd));
-
-/*
- * The smb(4) driver was modified on 2009/05/15 to require SMBus slave
- * addresses not have their LSB (bit 0) set.  If bit 0 is set to 1,
- * the driver immediately returns EINVAL, resulting in ioctl(2)
- * returning -1 with errno EINVAL.  See commit revision 1.38.2.1 for
- * details:
- *
- * http://www.freebsd.org/cgi/cvsweb.cgi/src/sys/dev/smbus/smb.c
- *
- * __FreeBSD_version was bumped as a result of this change.  The change
- * happened in version 7020101:
- *
- * http://www.freebsd.org/doc/en/books/porters-handbook/freebsd-versions.html
- *
- * The SMBus 2.0 specification states that SMBus slave addresses are 7 bits
- * in width (e.g. 1001001b), and occupy the *upper* 7 bits of an 8-bit
- * address.  Thus, the LSB is always 0.
- */
-#if (__FreeBSD_version >= 702101)
-	c.slave = (u_char) slave << 1;
-#else
-	c.slave = (u_char) slave;
-#endif
-	c.cmd = idxreg;
-	c.data.byte_ptr = ibuf;
-
-	if (ioctl(fd, SMB_READB, &c) == -1) {
-		err(EX_IOERR, "ioctl(SMB_READB) failed");
-	}
-
-	VERBOSE("read_byte(fd = %d, slave = 0x%02x, idxreg = 0x%02x) returned 0x%02x\n",
-		fd, slave, idxreg, (u_char) ibuf[0]);
-
-	return ((u_char) ibuf[0]);
-}
-
-
-/*
- * write_byte(int fd, uint8_t slave, const char idxreg, const char value)
- *
- *     fd = Descriptor return from open() on a /dev/smbX device
- *  slave = SMBus slave address; see boardlist[] in boards.c
- * idxreg = Index/register to write to
- *  value = Value to write to bus
- * 
- * Writes a byte to the SMBus via ioctl().  See smb(4) for details.
- */
-void
-write_byte(int fd, uint8_t slave, const char idxreg, const char value)
-{
-	struct smbcmd c;
-
-	VERBOSE("write_byte(fd = %d, slave = 0x%02x, idxreg = 0x%02x, value = 0x%02x)\n",
-		fd, slave, idxreg, value);
-
-	memset(&c, 0, sizeof(struct smbcmd));
-
-/*
- * The smb(4) driver was modified on 2009/05/15 to require SMBus slave
- * addresses not have their LSB (bit 0) set.  If bit 0 is set to 1,
- * the driver immediately returns EINVAL, resulting in ioctl(2)
- * returning -1 with errno EINVAL.  See commit revision 1.38.2.1 for
- * details:
- *
- * http://www.freebsd.org/cgi/cvsweb.cgi/src/sys/dev/smbus/smb.c
- *
- * __FreeBSD_version was bumped as a result of this change.  The change
- * happened in version 7020101:
- *
- * http://www.freebsd.org/doc/en/books/porters-handbook/freebsd-versions.html
- *
- * The SMBus 2.0 specification states that SMBus slave addresses are 7 bits
- * in width (e.g. 1001001b), and occupy the *upper* 7 bits of an 8-bit
- * address.  Thus, the LSB is always 0.
- */
-#if (__FreeBSD_version >= 702101)
-	c.slave = (u_char) slave << 1;
-#else
-	c.slave = (u_char) slave;
-#endif
-	c.cmd = idxreg;
-	c.data.byte = value;
-
-	if (ioctl(fd, SMB_WRITEB, &c) == -1) {
-		err(EX_IOERR, "ioctl(SMB_WRITEB) failed");
-	}
-
-	VERBOSE("write_byte() returning\n");
 }
 
 

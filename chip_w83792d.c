@@ -33,14 +33,18 @@ SUCH DAMAGE.
  */
 uint8_t		w83792d_divisor(const uint8_t);
 uint32_t	w83792d_rpmconv(const uint8_t, const uint8_t);
-int		w83792d_main(int, const uint8_t, struct sensors *);
+int		w83792d_main(int, const int, struct sensors *);
 
 /*
  * External functions (main.c)
  */
 extern void	VERBOSE(const char *, ...);
-extern uint8_t	read_byte(int, uint8_t, const char);
-extern void	write_byte(int, uint8_t, const char, const char);
+
+/*
+ * External functions (smbus_io_*.c)
+ */
+extern uint8_t	read_byte(int, int, const char);
+extern void	write_byte(int, int, const char, const char);
 
 
 /*
@@ -111,7 +115,7 @@ w83792d_rpmconv(const uint8_t count, const uint8_t div)
 
 
 /*
- * w83792d_main(int fd, uint8_t slave, struct sensors *s)
+ * w83792d_main(int fd, const int slave, struct sensors *s)
  *
  *    fd = Descriptor return from open() on a /dev/smbX device
  * slave = SMBus slave address; see boardlist[] in boards.c
@@ -141,7 +145,7 @@ w83792d_rpmconv(const uint8_t count, const uint8_t div)
  * below comments, for quick reference/debugging.
  */
 int
-w83792d_main(int fd, const uint8_t slave, struct sensors *s)
+w83792d_main(int fd, const int slave, struct sensors *s)
 {
 	static u_char regmap[256];
 	uint8_t i;
@@ -236,7 +240,7 @@ w83792d_main(int fd, const uint8_t slave, struct sensors *s)
 	 * FAN6           0xba  (divisor at 0x5c, bits 6-4)
 	 * FAN7           0xbe  (divisor at 0x9e, bits 2-0)
 	 * ------------   ---------------------
-	 */ 
+	 */
 	fandiv = w83792d_divisor(regmap[0x47] & 0x07);
 	s->fans[FAN_FAN1].value = w83792d_rpmconv(regmap[0x28], fandiv);
 

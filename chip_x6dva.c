@@ -36,8 +36,12 @@ int		x6dva_main(int, struct sensors *);
  * External functions (main.c)
  */
 extern void	VERBOSE(const char *, ...);
-extern uint8_t	read_byte(int, uint8_t, const char);
-extern void	write_byte(int, uint8_t, const char, const char);
+
+/*
+ * External funcions (smbus_io_*.c)
+ */
+extern uint8_t	read_byte(int, int, const char);
+extern void	write_byte(int, int, const char, const char);
 
 /*
  * External functions (chip_w83792d.c)
@@ -78,8 +82,8 @@ int
 x6dva_main(int fd, struct sensors *s)
 {
 	static u_char regmap[256];
-	uint8_t w83627hf_slave = 0x2c;
-	uint8_t w83792d_slave  = 0x2f;
+	int w83627hf_slave = 0x2c;
+	int w83792d_slave  = 0x2f;
 	uint8_t fandiv;
 
 	VERBOSE("x6dva_main(fd = %d, s = %p)\n", fd, s);

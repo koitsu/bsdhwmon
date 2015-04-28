@@ -1,4 +1,9 @@
-20150427
+20150428
+	Attempt to support FreeBSD 11.x after smbcmd struct overhaul;
+	see code comments in smbus_io_*.c for details.  This also
+	required declaring all slave addresses as int (and in older
+	drivers, turning them into single 8-bit values).
+
 	Change Makefile CFLAGS and debugging decisions a bit; let's build
 	with -Wall -Werror and friends by default.
 
