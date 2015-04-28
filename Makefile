@@ -30,8 +30,6 @@ CFLAGS+=	-Werror -Wall -Wextra -Wformat-security -Waggregate-return -Wbad-functi
 
 OBJS=	main.o boards.o output.o chip_w83792d.o chip_w83793g.o chip_x6dva.o smbus_io.c
 
-KERNVER!=	/usr/bin/uname -K
-
 all: bsdhwmon man
 
 bsdhwmon: ${OBJS}
