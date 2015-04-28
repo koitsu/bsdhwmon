@@ -1,4 +1,7 @@
-20150424
+20150427
+	Change Makefile CFLAGS and debugging decisions a bit; let's build
+	with -Wall -Werror and friends by default.
+
 	Fix typos and formatting mistakes in doc/BOARDS.
 
 	Fix some groff/mdoc errors in bsdhwmon.8.

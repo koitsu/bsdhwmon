@@ -10,7 +10,7 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 * Full tested on both i386 and amd64 systems, using RELENG\_6, RELENG\_7, RELENG\_8, and RELENG\_9
 * Written entirely in C
 * No reliance on third-party libraries or tools (e.g. autoconf)
-* Very simple and clean code -- heavily commented, well-documented, developed and built with <code>-Wall -Werror</code>
+* Very simple and clean code -- heavily commented, well-documented, built with <code>-Werror -Wall</code> and friends
 * Occasionally tested under valgrind
 * Open-source, released under the 2-clause BSD license
 

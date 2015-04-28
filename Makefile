@@ -24,10 +24,9 @@
 # SUCH DAMAGE.
 
 .if defined(DEBUG)
-CFLAGS=		-g3 -ggdb -Werror -Wall -Wformat-security -Waggregate-return -Wbad-function-cast -Wcast-align -Wdeclaration-after-statement -Wdisabled-optimization -Wfloat-equal -Winline -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wold-style-definition -Wpacked -Wpointer-arith -Wredundant-decls -Wsign-compare -Wstrict-prototypes -Wunreachable-code -Wwrite-strings
-.else
-CFLAGS+=	-Werror -Wall -Wformat-security -fno-inline
+CFLAGS+=	-g3 -ggdb
 .endif
+CFLAGS+=	-Werror -Wall -Wextra -Wformat-security -Waggregate-return -Wbad-function-cast -Wcast-align -Wdeclaration-after-statement -Wdisabled-optimization -Wfloat-equal -Winline -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wold-style-definition -Wpacked -Wpointer-arith -Wredundant-decls -Wstrict-prototypes -Wunreachable-code -Wwrite-strings
 
 OBJS=	main.o boards.o output.o chip_w83792d.o chip_w83793g.o chip_x6dva.o
 
