@@ -1,7 +1,8 @@
 Winbond W83792D: +5V Vcc is incorrect
 =======================================
 Currently, boards which use the Winbond W83792D H/W monitoring IC will
-have their +5V voltage shown incorrectly.
+have their +5V voltage shown incorrectly; the Supermicro P8SC8 and
+P8SCT are such examples.
 
 I've mailed Supermicro to try and find out why the calculation formula
 is wrong (since what I'm following comes from Winbond), but as of this
@@ -32,3 +33,5 @@ user had his fan RPM configuration in the system BIOS set to
 speed).  This could be a bug in the Winbond chipset, but I simply
 don't know.
 
+It is possible that git commit ad3bbad rectifies or improves the
+situation, citing 16-bit calculation overflow issues.
