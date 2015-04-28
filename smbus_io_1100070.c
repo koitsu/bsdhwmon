@@ -92,7 +92,7 @@ read_byte(int fd, int slave, const char idxreg)
 
 	memset(&c, 0, sizeof(struct smbcmd));
 
-	c.slave = (int) (slave << 1);
+	c.slave = slave << 1;
 	c.cmd = idxreg;
 
 	if (ioctl(fd, SMB_READB, &c) == -1) {
@@ -126,7 +126,7 @@ write_byte(int fd, int slave, const char idxreg, const char value)
 
 	memset(&c, 0, sizeof(struct smbcmd));
 
-	c.slave = (int) (slave << 1);
+	c.slave = slave << 1;
 	c.wdata.byte = value;
 	c.cmd = idxreg;
 
