@@ -38,7 +38,7 @@ int		x6dva_main(int, struct sensors *);
 extern void	VERBOSE(const char *, ...);
 
 /*
- * External funcions (smbus_io_*.c)
+ * External funcions (smbus_io.c)
  */
 extern uint8_t	read_byte(int, int, const char);
 extern void	write_byte(int, int, const char, const char);

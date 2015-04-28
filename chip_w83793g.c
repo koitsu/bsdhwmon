@@ -41,7 +41,7 @@ int		w83793g_main(int, const int, struct sensors *);
 extern void	VERBOSE(const char *, ...);
 
 /*
- * External functions (smbios_io_*.c)
+ * External functions (smbus_io.c)
  */
 extern uint8_t	read_byte(int, int, const char);
 extern void	write_byte(int, int, const char, const char);

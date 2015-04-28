@@ -28,18 +28,9 @@ CFLAGS+=	-g3 -ggdb
 .endif
 CFLAGS+=	-Werror -Wall -Wextra -Wformat-security -Waggregate-return -Wbad-function-cast -Wcast-align -Wdeclaration-after-statement -Wdisabled-optimization -Wfloat-equal -Winline -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wold-style-definition -Wpacked -Wpointer-arith -Wredundant-decls -Wstrict-prototypes -Wunreachable-code -Wwrite-strings
 
-OBJS=	main.o boards.o output.o chip_w83792d.o chip_w83793g.o chip_x6dva.o
+OBJS=	main.o boards.o output.o chip_w83792d.o chip_w83793g.o chip_x6dva.o smbus_io.c
 
-# Different versions of FreeBSD use different smbus(4) struct semantics
 KERNVER!=	/usr/bin/uname -K
-
-.if ${KERNVER} >= 1100070
-OBJS+=	smbus_io_1100070.o
-.elif ${KERNVER} >= 702101
-OBJS+=	smbus_io_702101.o
-.else
-OBJS+=	smbus_io_old.o
-.endif
 
 all: bsdhwmon man
 
