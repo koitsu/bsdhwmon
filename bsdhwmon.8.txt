@@ -163,4 +163,4 @@ CONTRIBUTORS
      lm_sensors project, for providing an unofficial secondary source of IC
      documentation and details of chip quirks.
 
-FreeBSD 9.3                     January 2, 2015                    FreeBSD 9.3
+FreeBSD 9.3                     April 28, 2015                     FreeBSD 9.3
