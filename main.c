@@ -225,9 +225,9 @@ main(int argc, char *argv[])
 	}
 
 	if ((mb = board_lookup(maker, product)) == NULL) {
-		warn("Your motherboard does not appear to be supported.  You can visit\n"
+		printf("Your motherboard does not appear to be supported.  You can visit\n"
 		     "http://bsdhwmon.koitsu.org/ to see if support for your motherboard\n"
-		     "and/or system is under development.");
+		     "and/or system is under development.\n");
 		exitcode = EX_DATAERR;
 		goto finish;
 	}
@@ -267,8 +267,8 @@ main(int argc, char *argv[])
 			ret = w83793g_main(smbfd, mb->slave, sdata);
 			break;
 		default:
-			warn("Internal bsdhwmon coding error.  Please report this bug\n"
-			     "to the bsdhwmon author.");
+			printf("Internal bsdhwmon coding error.  Please report this bug\n"
+			     "to the bsdhwmon author.\n");
 			exitcode = EX_SOFTWARE;
 			goto finish;
 	}
@@ -278,9 +278,9 @@ main(int argc, char *argv[])
 	 * validation passed, etc.).
 	 */
 	if (ret != 0) {
-		warn("Your motherboard is supported, but H/W chip verification failed.\n"
+		printf("Your motherboard is supported, but H/W chip verification failed.\n"
 		     "Please re-run bsdhwmon with the -v flag and send full output + bug\n"
-		     "report to the bsdhwmon author.");
+		     "report to the bsdhwmon author.\n");
 		exitcode = EX_SOFTWARE;
 		goto finish;
 	}
