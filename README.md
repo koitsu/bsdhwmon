@@ -37,5 +37,7 @@ For bug reports, enhancements, or general support, please use the [GitHub Issues
 ## Author
 * Jeremy Chadwick &lt;jdc@koitsu.org&gt;
 
-## Source repository
-* https://github.com/koitsu/bsdhwmon
+## Repositories
+* Distribution: http://bsdhwmon.koitsu.org/
+* Source: https://github.com/koitsu/bsdhwmon
+
