@@ -51,7 +51,7 @@ NOW!=	/bin/date +%Y%m%d
 
 # http://git-scm.com/docs/git-archive
 release:
-	@echo git tag -a bsdhwmon-${NOW} -m "Release: bsdhwmon-${NOW}"
+	@echo git tag -a bsdhwmon-${NOW} -m \"Release: bsdhwmon-${NOW}\"
 	@echo git archive --prefix=bsdhwmon-${NOW}/ -o /tmp/bsdhwmon-${NOW}.tar.gz bsdhwmon-${NOW}
 	@echo chmod 0644 /tmp/bsdhwmon-${NOW}.tar.gz
 	@echo ls -l /tmp/bsdhwmon-${NOW}.tar.gz
