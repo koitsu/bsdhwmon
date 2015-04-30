@@ -1,4 +1,4 @@
-20150428
+20150429
 	Attempt to support FreeBSD 11.x after smbcmd struct overhaul; see
 	comments in smbus_io.c for details.
 
