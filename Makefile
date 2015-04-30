@@ -49,13 +49,10 @@ clean:
 # Assign YYYYMMDD to $NOW variable
 NOW!=	/bin/date +%Y%m%d
 
+# http://git-scm.com/docs/git-archive
 release:
-	@echo cvs tag bsdhwmon-${NOW}
-	@echo cd /tmp
-	@echo cvs export -d bsdhwmon-${NOW} -r bsdhwmon-${NOW} bsdhwmon
-	@echo tar -pcf bsdhwmon-${NOW}.tar bsdhwmon-${NOW}
-	@echo gzip -9 bsdhwmon-${NOW}.tar
-	@echo chmod 0644 bsdhwmon-${NOW}.tar.gz
-	@echo rm -fr bsdhwmon-${NOW}
+	@echo git tag -a bsdhwmon-${NOW} -m "Release: bsdhwmon-${NOW}"
+	@echo git archive --prefix=bsdhwmon-${NOW}/ -o /tmp/bsdhwmon-${NOW}.tar.gz bsdhwmon-${NOW}
+	@echo chmod 0644 /tmp/bsdhwmon-${NOW}.tar.gz
 	@echo ls -l /tmp/bsdhwmon-${NOW}.tar.gz
 
