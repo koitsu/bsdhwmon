@@ -286,6 +286,19 @@ const struct pinmap temps_type09[] = {
 
 
 /*
+ * Supermicro X7DVL & X7DCL
+ */
+const struct pinmap temps_type10[] = {
+	{ TEMP_TD1,	"PECI Agent 1"	},
+	{ TEMP_TD2,	"PECI Agent 2"	},
+	{ TEMP_TD3,	"PECI Agent 3"	},
+	{ TEMP_TD4,	"PECI Agent 4"	},
+	{ TEMP_TR1,	"Sys Temp"	},
+	{ 0,		NULL		}
+};
+
+
+/*
  * The product strings in the below table are what are returned by
  * kenv(2), listed under smbios.planar.product.
  */
@@ -305,6 +318,9 @@ struct board boardlist[] = {
   { "Supermicro",	"X7SBA",	WINBOND_W83793G,	0x2f,	volts_type06,	temps_type06,	fans_type06	},
   { "Supermicro",	"X7SBL",	WINBOND_W83793G,	0x2f,	volts_type06,	temps_type06,	fans_type06	},
   { "Supermicro",	"X7SBi",	WINBOND_W83793G,	0x2f,	volts_type06,	temps_type06,	fans_type06	},
+  { "Supermicro",	"X7DVL-3",	WINBOND_W83793G,	0x2f,	volts_type03,	temps_type10,	fans_type05	},
+  { "Supermicro",	"X7DVL",	WINBOND_W83793G,	0x2f,	volts_type03,	temps_type10,	fans_type05	},
+  { "Supermicro",	"X7DCL",	WINBOND_W83793G,	0x2f,	volts_type03,	temps_type10,	fans_type05	},
   { NULL,		NULL,		0,			0,	NULL,		NULL,		NULL		}
 
 /*
