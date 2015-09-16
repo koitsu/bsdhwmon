@@ -286,15 +286,15 @@ const struct pinmap temps_type09[] = {
 
 
 /*
- * Supermicro X7DVL & X7DCL
+ * Supermicro X7DCL & X7DVL
  */
 const struct pinmap temps_type10[] = {
-	{ TEMP_TD1,	"PECI Agent 1"	},
-	{ TEMP_TD2,	"PECI Agent 2"	},
-	{ TEMP_TD3,	"PECI Agent 3"	},
-	{ TEMP_TD4,	"PECI Agent 4"	},
-	{ TEMP_TR1,	"Sys Temp"	},
-	{ 0,		NULL		}
+	{ TEMP_TD1,	"PECI Agent 1"		},
+	{ TEMP_TD2,	"PECI Agent 2"		},
+	{ TEMP_TD3,	"PECI Agent 3"		},
+	{ TEMP_TD4,	"PECI Agent 4"		},
+	{ TEMP_TR1,	"System Temperature"	},
+	{ 0,		NULL			}
 };
 
 
@@ -314,13 +314,13 @@ struct board boardlist[] = {
   { "Supermicro",	"X7DB8",	WINBOND_W83793G,	0x2f,	volts_type02,	temps_type07,	fans_type07	},
   { "Supermicro",	"X7DBP",	WINBOND_W83793G,	0x2f,	volts_type02,	temps_type02,	fans_type02	},
   { "Supermicro",	"X7DBT",	WINBOND_W83793G,	0x2f,	volts_type08,	temps_type08,	fans_type07	},
+  { "Supermicro",	"X7DCL",	WINBOND_W83793G,	0x2f,	volts_type03,	temps_type10,	fans_type05	},
+  { "Supermicro",	"X7DVL",	WINBOND_W83793G,	0x2f,	volts_type03,	temps_type10,	fans_type05	},
+  { "Supermicro",	"X7DVL-3",	WINBOND_W83793G,	0x2f,	volts_type03,	temps_type10,	fans_type05	},
   { "Supermicro",	"X7SB4/E",	WINBOND_W83793G,	0x2f,	volts_type05,	temps_type05,	fans_type05	},
   { "Supermicro",	"X7SBA",	WINBOND_W83793G,	0x2f,	volts_type06,	temps_type06,	fans_type06	},
   { "Supermicro",	"X7SBL",	WINBOND_W83793G,	0x2f,	volts_type06,	temps_type06,	fans_type06	},
   { "Supermicro",	"X7SBi",	WINBOND_W83793G,	0x2f,	volts_type06,	temps_type06,	fans_type06	},
-  { "Supermicro",	"X7DVL-3",	WINBOND_W83793G,	0x2f,	volts_type03,	temps_type10,	fans_type05	},
-  { "Supermicro",	"X7DVL",	WINBOND_W83793G,	0x2f,	volts_type03,	temps_type10,	fans_type05	},
-  { "Supermicro",	"X7DCL",	WINBOND_W83793G,	0x2f,	volts_type03,	temps_type10,	fans_type05	},
   { NULL,		NULL,		0,			0,	NULL,		NULL,		NULL		}
 
 /*
