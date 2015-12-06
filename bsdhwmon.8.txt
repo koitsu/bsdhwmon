@@ -139,24 +139,10 @@ CONTRIBUTORS
      The following individuals have made contributions to bsdhwmon, either by
      helping with the code, testing the software, or recommending features:
 
-           Tony Allevato
-           Mike Andrews
-           Alan Bryan
-           Gergely Czuczy
-           Michael Fuckner
-           M. Giegerich
-           Matthew Herzog
-           Dan Naumov
-           Billy Newsom
-           Daniel O'Connor
-           Alexey V. Panfilov
-           Jim Perry
-           Jim Pingle
-           Patrick Proniewski
-           Matt Reimer
-           Larry Rosenman
-           Ulrich Spoerlein
-           Evren Yurtesen
+     Tony Allevato, Mike Andrews, Alan Bryan, Gergely Czuczy, Michael Fuckner,
+     M. Giegerich, Matthew Herzog, Dan Naumov, Billy Newsom, Daniel O'Connor,
+     Alexey V. Panfilov, Jim Perry, Jim Pingle, Patrick Proniewski, Matt
+     Reimer, Larry Rosenman, Ulrich Spoerlein, Evren Yurtesen
 
      Additional thanks to SHIMIZU Yoshifumi, author of mbmon, for providing
      BSD hardware monitoring support on older x86 hardware, and to the Linux
