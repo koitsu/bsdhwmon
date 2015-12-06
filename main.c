@@ -120,8 +120,8 @@ USAGE(void)
 	printf("  -h            print this message\n");
 	printf("  -v            be verbose (show debugging output)\n");
 	printf("\n");
-	printf("http://bsdhwmon.koitsu.org/\n");
-	printf("Report bugs to <jdc@koitsu.org>\n");
+	printf("https://github.com/koitsu/bsdhwmon\n");
+	printf("Report bugs at https://github.com/koitsu/bsdhwmon/issues\n");
 	exit(EX_USAGE);
 }
 
@@ -225,8 +225,8 @@ main(int argc, char *argv[])
 	}
 
 	if ((mb = board_lookup(maker, product)) == NULL) {
-		printf("Your motherboard does not appear to be supported.  You can visit\n"
-		     "http://bsdhwmon.koitsu.org/ to see if support for your motherboard\n"
+		printf("Your motherboard does not appear to be supported.  Please visit\n"
+		     "https://github.com/koitsu/bsdhwmon to see if support for your motherboard\n"
 		     "and/or system is under development.\n");
 		exitcode = EX_DATAERR;
 		goto finish;
