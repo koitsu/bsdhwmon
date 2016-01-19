@@ -47,5 +47,5 @@ clean:
 	rm -f bsdhwmon *.o *.core
 
 ports-test:
-	echo "portlint && make stage && make check-plist && make stage-qa && make package"
+	@echo "portlint && make stage && make check-plist && make stage-qa && make package"
 
