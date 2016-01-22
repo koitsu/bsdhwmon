@@ -4,7 +4,7 @@ NAME
      bsdhwmon -- hardware sensor monitoring utility
 
 SYNOPSIS
-     bsdhwmon [-Jhlv] [-f device]
+     bsdhwmon [-Jchlv] [-f device]
 
 DESCRIPTION
      bsdhwmon is a user-land application which communicates via SMBus with
