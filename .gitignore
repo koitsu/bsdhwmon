@@ -1,3 +1,6 @@
+# bsdhwmon binary itself
+bsdhwmon
+
 # Object files
 *.o
 *.ko
