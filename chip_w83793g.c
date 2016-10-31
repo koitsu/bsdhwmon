@@ -78,7 +78,7 @@ w83793g_rpmconv(const uint16_t count)
 {
 	uint32_t r = 0;
 
-	VERBOSE("w83793g_rpmconv(count = 0x%04x)\n", count);
+	VERBOSE("w83793g_rpmconv(count = 0x%04" PRIx16 ")\n", count);
 
 	if (count != 0x0fff && count != 0) {
 		r = 1350000 / count;
@@ -123,13 +123,13 @@ w83793g_tempadj(const uint8_t raw)
 {
 	uint8_t r = raw;
 
-	VERBOSE("w83793g_tempadj(raw = 0x%02x)\n", raw);
+	VERBOSE("w83793g_tempadj(raw = 0x%02" PRIx8 ")\n", raw);
 
 	if ((raw & 0x80) == 0x80) {
 		r = 0;
 	}
 
-	VERBOSE("w83793g_tempadj() returning 0x%02x\n", r);
+	VERBOSE("w83793g_tempadj() returning 0x%02" PRIx8 "\n", r);
 	return (r);
 }
 

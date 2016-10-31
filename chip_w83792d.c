@@ -63,7 +63,7 @@ w83792d_divisor(const uint8_t raw)
 {
 	uint8_t r = 2;
 
-	VERBOSE("w83792d_divisor(raw = 0x%02x)\n", raw);
+	VERBOSE("w83792d_divisor(raw = 0x%02" PRIx8 ")\n", raw);
 
 	switch (raw) {
 		case 0x00: r = 1; break;
@@ -75,7 +75,7 @@ w83792d_divisor(const uint8_t raw)
 		case 0x06: r = 64; break;
 		case 0x07: r = 128; break;
 	}
-	VERBOSE("w83792d_divisor() returning 0x%02x\n", r);
+	VERBOSE("w83792d_divisor() returning 0x%02" PRIx8 "\n", r);
 	return (r);
 }
 
@@ -102,7 +102,7 @@ w83792d_rpmconv(const uint8_t count, const uint8_t div)
 {
 	uint32_t r = 0;
 
-	VERBOSE("w83792d_rpmconv(count = 0x%02x, div = %u)\n",
+	VERBOSE("w83792d_rpmconv(count = 0x%02" PRIx8 ", div = " PRIu8 ")\n",
 		count, div);
 
 	if (count != 0xff && count != 0 && div != 0) {
