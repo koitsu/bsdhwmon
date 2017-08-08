@@ -112,7 +112,6 @@ USAGE(void)
 	printf("Usage: bsdhwmon [options]\n");
 	printf("\n");
 	printf("Options:\n");
-	printf("\n");
 	printf("  -J            JSON-formatted output\n");
 	printf("  -c            comma-delimited output\n");
 	printf("  -f DEVICE     use DEVICE as smb(4) device (default: " DEFAULT_SMBDEV ")\n");
