@@ -44,8 +44,12 @@ bsdhwmon.8.txt: bsdhwmon.8
 	troff -Tascii -mman bsdhwmon.8 | grotty -c -b -o -u > ${.TARGET}
 
 clean:
-	rm -f bsdhwmon ${OBJS} *.core
+	-rm -f bsdhwmon bsdhwmon.8.txt ${OBJS} *.core
+
+distclean: clean
 
 ports-test:
 	@echo "portlint && make stage && make check-plist && make stage-qa && make package"
+
+.PHONY: all man clean distclean ports-test
 
