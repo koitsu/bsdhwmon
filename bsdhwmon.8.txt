@@ -11,7 +11,7 @@ DESCRIPTION
      hardware monitoring ICs on motherboards.  Many different pieces of infor-
      mation can be returned, but the most common are fan RPMs, processor and
      system temperatures, and motherboard voltages.  All data is sent to stan-
-     dard output.
+     dard output.  Usage syntax and all errors are sent to standard error.
 
      At this time, bsdhwmon supports a multitude of Winbond hardware monitor-
      ing ICs, predominantly on Supermicro motherboards.
@@ -149,4 +149,4 @@ CONTRIBUTORS
      lm_sensors project, for providing an unofficial secondary source of IC
      documentation and details of chip quirks.
 
-FreeBSD 9.3                    January 21, 2016                    FreeBSD 9.3
+FreeBSD 9.3                    December 21, 2017                   FreeBSD 9.3

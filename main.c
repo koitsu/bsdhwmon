@@ -83,18 +83,20 @@ VERBOSE(const char *fmt, ...)
 static void
 USAGE(void)
 {
-	printf("Usage: bsdhwmon [options]\n");
-	printf("\n");
-	printf("Options:\n");
-	printf("  -J            JSON-formatted output\n");
-	printf("  -c            comma-delimited output\n");
-	printf("  -f DEVICE     use DEVICE as smb(4) device (default: " DEFAULT_SMBDEV ")\n");
-	printf("  -l            list supported motherboard ID strings\n");
-	printf("  -h            print this message\n");
-	printf("  -v            be verbose (show debugging output)\n");
-	printf("\n");
-	printf("https://github.com/koitsu/bsdhwmon\n");
-	printf("Report bugs at https://github.com/koitsu/bsdhwmon/issues\n");
+	fprintf(stderr,
+		"Usage: bsdhwmon [options]\n"
+		"\n"
+		"Options:\n"
+		"  -J            JSON-formatted output\n"
+		"  -c            comma-delimited output\n"
+		"  -f DEVICE     use DEVICE as smb(4) device (default: " DEFAULT_SMBDEV ")\n"
+		"  -l            list supported motherboard ID strings\n"
+		"  -h            print this message\n"
+		"  -v            be verbose (show debugging output)\n"
+		"\n"
+		"https://github.com/koitsu/bsdhwmon\n"
+		"Report bugs at https://github.com/koitsu/bsdhwmon/issues\n"
+	);
 	exit(EX_USAGE);
 }
 
@@ -129,7 +131,7 @@ main(int argc, char *argv[])
 				break;
 			case 'f':
 				if (strlcpy(smbdev, optarg, MAXPATHLEN) >= MAXPATHLEN) {
-					warn("Device pathname exceeds %u bytes in length", MAXPATHLEN);
+					warnx("Device pathname exceeds %u bytes in length", MAXPATHLEN);
 					exitcode = EX_SOFTWARE;
 					goto finish;
 				}
@@ -154,7 +156,7 @@ main(int argc, char *argv[])
 	 * bsdhwmon requires root access due to opening /dev/smbX
 	 */
 	if (geteuid() != 0) {
-		warn("Must be run as root, or setuid root");
+		warnx("Must be run as root, or setuid root");
 		exitcode = EX_NOPERM;
 		goto finish;
 	}
@@ -163,7 +165,7 @@ main(int argc, char *argv[])
 	 * Do some basic argument conflict checking
 	 */
 	if (comma_output && json_output) {
-		warn("Please choose only one output format");
+		warnx("Please choose only one output format");
 		exitcode = EX_USAGE;
 		goto finish;
 	}
@@ -202,7 +204,7 @@ main(int argc, char *argv[])
 	}
 
 	if ((mb = board_lookup(maker, product)) == NULL) {
-		printf("Your motherboard does not appear to be supported.  Please visit\n"
+		warnx("Your motherboard does not appear to be supported.  Please visit\n"
 		     "https://github.com/koitsu/bsdhwmon to see if support for your motherboard\n"
 		     "and/or system is under development.\n");
 		exitcode = EX_DATAERR;
@@ -244,8 +246,7 @@ main(int argc, char *argv[])
 			ret = w83793g_main(smbfd, mb->slave, sdata);
 			break;
 		default:
-			printf("Internal bsdhwmon coding error.  Please report this bug\n"
-			     "to the bsdhwmon author.\n");
+			warnx("Internal error.  Please report this bug to the author.");
 			exitcode = EX_SOFTWARE;
 			goto finish;
 	}
@@ -255,9 +256,9 @@ main(int argc, char *argv[])
 	 * validation passed, etc.).
 	 */
 	if (ret != 0) {
-		printf("Your motherboard is supported, but H/W chip verification failed.\n"
+		warnx("Your motherboard is supported, but H/W chip verification failed.\n"
 		     "Please re-run bsdhwmon with the -v flag and send full output + bug\n"
-		     "report to the bsdhwmon author.\n");
+		     "report to the author.");
 		exitcode = EX_SOFTWARE;
 		goto finish;
 	}
