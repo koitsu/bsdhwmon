@@ -128,7 +128,11 @@ main(int argc, char *argv[])
 				comma_output = 1;
 				break;
 			case 'f':
-				strncpy(smbdev, optarg, MAXPATHLEN);
+				if (strlcpy(smbdev, optarg, MAXPATHLEN) >= MAXPATHLEN) {
+					warn("Device pathname exceeds %u bytes in length", MAXPATHLEN);
+					exitcode = EX_SOFTWARE;
+					goto finish;
+				}
 				break;
 			case 'l':
 				list_models(&boardlist);
