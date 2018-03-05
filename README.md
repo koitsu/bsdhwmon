@@ -5,7 +5,7 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 
 * Written with stability and production environments in mind
 * Intended for use with server products (currently Supermicro, but can be extended to others that have proper SMBIOS identification data)
-* Uses SMBus ([smb(4)](https://www.freebsd.org/cgi/man.cgi?query=smb&apropos=0&sektion=0&manpath=FreeBSD+9.3-stable&arch=default&format=html) driver) exclusively, significantly decreasing risks and CPU usage compared to classic LPC I/O
+* Uses SMBus ([smb(4)](https://www.freebsd.org/cgi/man.cgi?query=smb&apropos=0&sektion=0&manpath=FreeBSD+11.1-stable&arch=default&format=html) driver) exclusively, significantly decreasing risks and CPU usage compared to classic LPC I/O
 * Based primarily on documentation provided by motherboard/server vendors, combined with documentation from chipset manufacturers
 * Identifies hardware via strict SMBIOS data matching; device "probing" is avoided to minimise false positives and thus risks
 * Full tested on both i386 and amd64 systems across multiple versions of FreeBSD (legacy and present-day)
@@ -19,17 +19,17 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 At this time, only a subset of Supermicro hardware is supported.  For an official list of supported hardware and models, please see the [doc/SUPPORTED](doc/SUPPORTED) file.
 
 ## Supported Operating Systems
-* FreeBSD 8.x (stable/8)
-* FreeBSD 9.x (stable/9)
-
-## Unsupported/Untested Operating Systems
-* FreeBSD 10.x (stable/10)
 * FreeBSD 11.x (stable/11)
+* FreeBSD 10.x (stable/10)
+
+## Untested Operating Systems
 * FreeBSD 12.x (head/current)
 
-## Deprecated Operating Systems
-* FreeBSD 6.x (stable/6)
-* FreeBSD 7.x (stable/7)
+## Deprecated (Unsupported) Operating Systems
+* FreeBSD 9.x
+* FreeBSD 8.x
+* FreeBSD 7.x
+* FreeBSD 6.x
 
 ## Usage
 Please see the [bsdhwmon man page](bsdhwmon.8.txt) for all command-line flags and usage details.

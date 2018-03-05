@@ -65,7 +65,12 @@ static int	f_verbose = 0;				/* Command line flag "-v" */
  * VERBOSE() is mainly used for debugging.  Use of the "-v" flag will
  * cause underlying functions to call VERBOSE() with all sorts of
  * information.
+ *
+ * The format attribute is to safely squelch -Wformat-nonliteral (part
+ * of of -Wformat=2) warnings about vprintf() with clang.  Reference:
+ * http://clang.llvm.org/docs/AttributeReference.html#format-gnu-format
  */
+__attribute__((__format__ (__printf__, 1, 0)))
 void
 VERBOSE(const char *fmt, ...)
 {
