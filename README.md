@@ -12,7 +12,6 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 * Written entirely in C
 * No reliance on third-party libraries or tools (e.g. autotools, libtool, etc.)
 * Very simple and clean code -- heavily commented, well-documented, built with <code>-Werror -Wall</code> and similar flags
-* Occasionally tested under valgrind
 * Open-source, released under the 2-clause BSD license
 
 ## Supported Hardware
