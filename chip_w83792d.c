@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: BSD-2-Clause-FreeBSD
+ */
+
 #include <string.h>
 #include <inttypes.h>
 #include "global.h"

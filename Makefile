@@ -1,3 +1,7 @@
+#
+# SPDX-License-Identifier: BSD-2-Clause-FreeBSD
+#
+
 .if defined(DEBUG)
 CFLAGS+=	-g3 -ggdb
 .endif
