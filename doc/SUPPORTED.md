@@ -44,7 +44,7 @@ Supermicro P4SCT       | Lacks SMBus interface; LPC I/O only
 Supermicro PDSBM-LN1   | Lacks SMBus interface; LPC I/O only
 Supermicro PDSBM-LN2   | Lacks SMBus interface; LPC I/O only
 Supermicro PDSBM-LN2+  | Lacks SMBus interface; LPC I/O only
-Tyan S2932             | Lack of technical details from vendor; see Issue #2
+Tyan S2932             | Lack of technical details from vendor; see https://github.com/koitsu/bsdhwmon/issues/2
 
 
 # Under Investigation
@@ -55,7 +55,7 @@ added.
 
 Board/System          | Maker         | Product               | Chip
 --------------------- | ------------- | --------------------- | -----------------------
-Asrock EP2C602-4L/D16 | Unknown       | Unknown               | Nuvoton; see Issue #4
+Asrock EP2C602-4L/D16 | Unknown       | Unknown               | Nuvoton; see https://github.com/koitsu/bsdhwmon/issues/4
 IBM eServer 306m      | IBM           | M11ip/M11ix           | Unknown
 IBM System x3250      | IBM           | M31ip                 | Unknown
 
