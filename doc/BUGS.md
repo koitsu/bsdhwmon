@@ -24,15 +24,14 @@ FAN3                    84375 RPM
 FAN4                        0 RPM
 FAN5                        0 RPM
 
-Further executions of bsdhwmon did not exhibit this problem.  However,
-I take the report seriously, as it could indicate a strange bug in
-bsdhwmon, or possibly a bug in the Winbond W83792D chipset.  At this
-time I have not been able to determine the root cause, however the
-user had his fan RPM configuration in the system BIOS set to
-"3-pin Server" rather than "Disabled" (which runs the fans at full
-speed).  This could be a bug in the Winbond chipset, but I simply
-don't know.
-
-It is possible that git commit ad3bbad rectifies or improves the
-situation, citing 16-bit calculation overflow issues.
+Further executions of bsdhwmon did not exhibit this problem.  I take 
+he report seriously, as it could indicate a strange bug in bsdhwmon,
+or possibly a bug in the Winbond W83792D chipset.  At this time I
+have not been able to determine the root cause, however the user
+had his fan RPM configuration in the system BIOS set to "3-pin
+Server" rather than "Disabled" (which runs the fans at full speed).
+This could be a bug in the Winbond chipset, but I simply don't know.
+However, it's equally possible that
+[commit ad3bbad](https://github.com/koitsu/bsdhwmon/commit/ad3bbad9980297392773a5bd3e848772b6e85e0d)
+rectified the problem, citing 16-bit calculation overflow issues.
 
