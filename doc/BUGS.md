@@ -1,5 +1,5 @@
-Winbond W83792D: +5V Vcc is incorrect
-=======================================
+# Winbond W83792D: +5V Vcc is incorrect
+
 Currently, boards which use the Winbond W83792D H/W monitoring IC will
 have their +5V voltage shown incorrectly; the Supermicro P8SC8 and
 P8SCT are such examples.
@@ -13,8 +13,8 @@ quite "spaghetti" -- it's hard to discern what the calculation values
 are, and if they're the same for all W83792D systems.
 
 
-Winbond W83792D: FAN3 RPMs may be inaccurate/high
-===================================================
+# Winbond W83792D: FAN3 RPMs may be inaccurate/high
+
 I've received a single (isolated) report involving a Supermicro P8SCi
 board reporting absurdly high values for FAN3.  Example:
 
@@ -35,3 +35,4 @@ don't know.
 
 It is possible that git commit ad3bbad rectifies or improves the
 situation, citing 16-bit calculation overflow issues.
+
