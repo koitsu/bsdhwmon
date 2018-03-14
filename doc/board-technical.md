@@ -27,12 +27,7 @@ where applicable.
 ## C2SEE
 - Winbond W83627DHG-P, slave address 0x2d
 
-## P8SC8
-
-- Winbond W83792D, slave address 0x2f
-- See [doc/bugs.md](/doc/bugs.md) for issues relating to voltage values and fan RPMs
-
-## P8SCT
+## P8SC8, P8SCT, P8SCi
 
 - Winbond W83792D, slave address 0x2f
 - See [doc/bugs.md](/doc/bugs.md) for issues relating to voltage values and fan RPMs
