@@ -30,12 +30,12 @@ where applicable.
 ## P8SC8
 
 - Winbond W83792D, slave address 0x2f
-- See [doc/bugs.md](doc/bugs.md) for issues relating to voltage values and fan RPMs
+- See [doc/bugs.md](/doc/bugs.md) for issues relating to voltage values and fan RPMs
 
 ## P8SCT
 
 - Winbond W83792D, slave address 0x2f
-- See [doc/bugs.md](doc/bugs.md) for issues relating to voltage values and fan RPMs
+- See [doc/bugs.md](/doc/bugs.md) for issues relating to voltage values and fan RPMs
 
 ## PDSMA+
 
@@ -52,7 +52,7 @@ where applicable.
 ## X6DHR-8G2, X6DHR-TG
 
 - Winbond W83792D, slave address 0x2f
-- See [doc/bugs.md](doc/bugs.md) for issues relating to fan RPMs
+- See [doc/bugs.md](/doc/bugs.md) for issues relating to fan RPMs
 
 ## X6DVA-4G2, X6DVA-4G, X6DVA-EG2, X6DVA-EG
 
@@ -60,7 +60,7 @@ There are physically two chips on these boards:
 
 - Winbond W83627HF, slave address 0x2c
 - Winbond W83792D, slave address 0x2f
-- See [doc/bugs.md](doc/bugs.md) for issues relating to fan RPMs
+- See [doc/bugs.md](/doc/bugs.md) for issues relating to fan RPMs
 
 Unlike the later X7SBL series, Supermicro chose to make use of the monitoring
 capabilities of both chips.  Register details are below, provided by Supermicro
@@ -69,7 +69,7 @@ Technical Support.
 "CR" stands for "Control Register", i.e. register offset.
 
 For further details of register decoding and quirks, refer to the comments
-in the source code file [chip\_x6dva.c](chip_x6dva.c).
+in the source code file [chip\_x6dva.c](/chip_x6dva.c).
 
 ```
 Chip        Indexes     Description
