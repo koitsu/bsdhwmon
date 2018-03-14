@@ -53,11 +53,26 @@ bsdhwmon currently does not support the below motherboards/systems,
 but investigative efforts are underway to see if support can be
 added.
 
+**If you own any of the below systems and run FreeBSD on them, please
+get in touch with me!**
+
 Board/System          | Maker         | Product               | Chip
 --------------------- | ------------- | --------------------- | -----------------------
 Asrock EP2C602-4L/D16 | Unknown       | Unknown               | Nuvoton; see https://github.com/koitsu/bsdhwmon/issues/4
 IBM eServer 306m      | IBM           | M11ip/M11ix           | Unknown
 IBM System x3250      | IBM           | M31ip                 | Unknown
+Supermicro C2G41      | Supermicro    | Unknown               | ITE IT8720F-HX
+Supermicro C2SEA      | Supermicro    | Unknown               | Winbond W83627DHG-P
+Supermicro C2SEE      | Supermicro    | Unknown               | Winbond W83627DHG-P
+Supermicro X7SB3-F    | Supermicro    | Unknown               | Winbond W83627DHG-P
+Supermicro X7SLM      | Supermicro    | Unknown               | Winbond W83627DHG-P
+Supermicro X7SLM+     | Supermicro    | Unknown               | Winbond W83627DHG-P
+Supermicro X7SLM-L    | Supermicro    | Unknown               | Winbond W83627DHG-P
+Supermicro X8SI6      | Supermicro    | Unknown               | Winbond W83627DHG-P
+Supermicro X8SIE      | Supermicro    | Unknown               | Winbond W83627DHG-P
+Supermicro X8SIL      | Supermicro    | Unknown               | Winbond W83627DHG-P
+Supermicro X8STI      | Supermicro    | Unknown               | Winbond W83627DHG-P
+
 
 # Notes
 
