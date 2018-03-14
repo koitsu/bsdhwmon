@@ -16,7 +16,7 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 * Open-source, released under the 2-clause BSD license
 
 ## Supported Hardware
-At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](doc/supported.md)
+At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](/doc/supported.md)
 
 ## Supported Operating Systems
 * FreeBSD 11.x (stable/11)
@@ -32,7 +32,7 @@ At this time, only a small set of Supermicro hardware is supported.  For an offi
 * FreeBSD 6.x
 
 ## Usage
-Please see the [bsdhwmon man page](bsdhwmon.8.txt) for all command-line flags and usage details.
+Please see the [bsdhwmon man page](/bsdhwmon.8.txt) for all command-line flags and usage details.
 
 ## Support Requests
 For bug reports, enhancements, or general support, please use the [GitHub Issues](https://github.com/koitsu/bsdhwmon/issues) interface.
