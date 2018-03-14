@@ -18,11 +18,13 @@ are, and if they're the same for all W83792D systems.
 I've received a single (isolated) report involving a Supermicro P8SCi
 board reporting absurdly high values for FAN3.  Example:
 
+```
 FAN1                        0 RPM
 FAN2                     2909 RPM
 FAN3                    84375 RPM
 FAN4                        0 RPM
 FAN5                        0 RPM
+```
 
 Further executions of bsdhwmon did not exhibit this problem.  I take 
 he report seriously, as it could indicate a strange bug in bsdhwmon,
