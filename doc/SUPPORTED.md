@@ -31,19 +31,20 @@ Supermicro X7SBi      | Supermicro    | X7SBi                 | Winbond W83793G
 
 # Unsupported Hardware
 
-Board/System          | Reason
---------------------- | -------------------------------------------------------
-Celestix MSA 2000i    | Lacks SMBus interface; LPC I/O only
-Supermicro 370SSE     | No hardware monitoring IC available
-Supermicro C2SBA      | Lacks SMBus interface; LPC I/O only
-Supermicro C2SBA+     | Lacks SMBus interface; LPC I/O only
-Supermicro P4LDR      | FreeBSD lacks ServerWorks GC-LE SMBus driver
-Supermicro P4SCE      | Lacks SMBus interface; LPC I/O only
-Supermicro P4SCI      | Lacks SMBus interface; LPC I/O only
-Supermicro P4SCT      | Lacks SMBus interface; LPC I/O only
-Supermicro PDSBM-LN1  | Lacks SMBus interface; LPC I/O only
-Supermicro PDSBM-LN2  | Lacks SMBus interface; LPC I/O only
-Supermicro PDSBM-LN2+ | Lacks SMBus interface; LPC I/O only
+Board/System           | Reason
+---------------------- | ------------------------------------------------
+Celestix MSA 2000i     | Lacks SMBus interface; LPC I/O only
+Supermicro 370SSE      | No hardware monitoring IC available
+Supermicro C2SBA       | Lacks SMBus interface; LPC I/O only
+Supermicro C2SBA+      | Lacks SMBus interface; LPC I/O only
+Supermicro P4LDR       | FreeBSD lacks ServerWorks GC-LE SMBus driver
+Supermicro P4SCE       | Lacks SMBus interface; LPC I/O only
+Supermicro P4SCI       | Lacks SMBus interface; LPC I/O only
+Supermicro P4SCT       | Lacks SMBus interface; LPC I/O only
+Supermicro PDSBM-LN1   | Lacks SMBus interface; LPC I/O only
+Supermicro PDSBM-LN2   | Lacks SMBus interface; LPC I/O only
+Supermicro PDSBM-LN2+  | Lacks SMBus interface; LPC I/O only
+Tyan S2932             | Lack of technical details from vendor (see GH-2)
 
 
 # Under Investigation
@@ -53,7 +54,8 @@ but investigative efforts are underway to see if support can be
 added.
 
 Board/System          | Maker         | Product               | Chip
---------------------- | ------------- | --------------------- | ---------------
+--------------------- | ------------- | --------------------- | ------------------
+Asrock EP2C602-4L/D16 | Unknown       | Unknown               | Nuvoton (see GH-4)
 IBM eServer 306m      | IBM           | M11ip/M11ix           | Unknown
 IBM System x3250      | IBM           | M31ip                 | Unknown
 
