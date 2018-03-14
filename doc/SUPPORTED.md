@@ -1,6 +1,6 @@
-Supported Hardware
-==================
-Board/System          | Maker[1]      | Product[1]            | Chip
+# Supported Hardware
+
+Board/System          | Maker         | Product               | Chip
 --------------------- | ------------- | --------------------- | ---------------
 Supermicro P8SC8      | Supermicro    | P8SC8                 | Winbond W83792D
 Supermicro P8SCT      | Supermicro    | P8SCT                 | Winbond W83792D
@@ -29,8 +29,8 @@ Supermicro X7SBE      | Supermicro    | X7SB4/E               | Winbond W83793G
 Supermicro X7SBi      | Supermicro    | X7SBi                 | Winbond W83793G
 
 
-Unsupported Hardware
-====================
+# Unsupported Hardware
+
 Board/System          | Reason
 --------------------- | -------------------------------------------------------
 Celestix MSA 2000i    | Lacks SMBus interface; LPC I/O only
@@ -46,19 +46,19 @@ Supermicro PDSBM-LN2  | Lacks SMBus interface; LPC I/O only
 Supermicro PDSBM-LN2+ | Lacks SMBus interface; LPC I/O only
 
 
-Under Investigation
-===================
+# Under Investigation
+
 bsdhwmon currently does not support the below motherboards/systems,
 but investigative efforts are underway to see if support can be
 added.
 
-Board/System          | Maker[1]      | Product[1]            | Chip
+Board/System          | Maker         | Product               | Chip
 --------------------- | ------------- | --------------------- | ---------------
 IBM eServer 306m      | IBM           | M11ip/M11ix           | Unknown
 IBM System x3250      | IBM           | M31ip                 | Unknown
 
-Notes
-=====
-[1] -- Refers to the kenv string "smbios.planar.X" where X is maker, product,
-or whatever is specified.
+# Notes
+
+* "Maker" refers to the [kenv(1)](https://www.freebsd.org/cgi/man.cgi?kenv) string `smbios.planar.maker`
+* "Product" refers to the [kenv(1)](https://www.freebsd.org/cgi/man.cgi?kenv) string `smbios.planar.product`
 
