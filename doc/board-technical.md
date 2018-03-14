@@ -19,31 +19,57 @@ I've done my best to retain the raw formatting of the information provided,
 where applicable.
 
 ## C2G41
-- SMBus slave address 0x2d
-- ITE IT8720F-HX
+- ITE IT8720F-HX, slave address 0x2d
 
 ## C2SEA
-- SMBus slave address 0x2d
-- Winbond W83627DHG-P
+- Winbond W83627DHG-P, slave address 0x2d
 
 ## C2SEE
-- SMBus slave address 0x2d
-- Winbond W83627DHG-P
+- Winbond W83627DHG-P, slave address 0x2d
+
+## P8SC8
+
+- Winbond W83792D, slave address 0x2f
+- See [doc/bugs.md](doc/bugs.md) for issues relating to voltage values and fan RPMs
+
+## P8SCT
+
+- Winbond W83792D, slave address 0x2f
+- See [doc/bugs.md](doc/bugs.md) for issues relating to voltage values and fan RPMs
+
+## PDSMA+
+
+- Winbond W83793G, slave address 0x2f
+
+## PDSMi+
+
+- Winbond W83793G, slave address 0x2f
+
+## PDSMU
+
+- Winbond W83793G, slave address 0x2f
+
+## X6DHR-8G2, X6DHR-TG
+
+- Winbond W83792D, slave address 0x2f
+- See [doc/bugs.md](doc/bugs.md) for issues relating to fan RPMs
 
 ## X6DVA-4G2, X6DVA-4G, X6DVA-EG2, X6DVA-EG
 
 There are physically two chips on these boards:
 
-- Winbond W83627HF (slave address 0x2c)
-- Winbond W83792D (slave address 0x2f)
+- Winbond W83627HF, slave address 0x2c
+- Winbond W83792D, slave address 0x2f
+- See [doc/bugs.md](doc/bugs.md) for issues relating to fan RPMs
 
 Unlike the later X7SBL series, Supermicro chose to make use of the monitoring
 capabilities of both chips.  Register details are below, provided by Supermicro
 Technical Support.
 
-"CR" stands for "Control Register", i.e. register offset.  For further details
-of register decoding and quirks, refer to the comments in the bsdhwmon source
-code, specifically `chip_x6dva.c`.
+"CR" stands for "Control Register", i.e. register offset.
+
+For further details of register decoding and quirks, refer to the comments
+in the source code file [chip\_x6dva.c](chip_x6dva.c).
 
 ```
 Chip        Indexes     Description
@@ -73,8 +99,8 @@ W83792D     CRC8,CRC9   CPU Temp 2
 There are physically two chips on these boards: a Winbond W83627HF-AW and a
 Winbond W83793G.
 
-- W83627HF-AW (slave address 0x2d), used solely for Super I/O capabilities
-- W83793G (slave address 0x2f), used solely for H/W monitoring
+- Winbond W83627HF-AW, slave address 0x2d: used solely for Super I/O capabilities
+- Winbond W83793G, slave address 0x2f: used solely for H/W monitoring
 
 Supermicro's website states that the board contains a W83627HF, which is
 incorrect -- it truly is a W83627HF-AW.
@@ -119,25 +145,20 @@ Supermicro is difficult" -- I had no such difficulty; asking via Email
 was sufficient.
 
 ## X7SLM
-- SMBus slave address 0x2d
-- Winbond W83627DHG-P
+- Winbond W83627DHG-P, slave address 0x2d
 
 ## X7SLM+
-- SMBus slave address 0x2d
-- Winbond W83627DHG-P
+- Winbond W83627DHG-P, slave address 0x2d
 
 ## X7SLM-L
-- SMBus slave address 0x2d
-- Winbond W83627DHG-P
+- Winbond W83627DHG-P, slave address 0x2d
 
 ## X7SB3-F
-- SMBus slave address 0x2d
-- Winbond W83627DHG-P
+- Winbond W83627DHG-P, slave address 0x2d
 
 ## X8SI6, X8SIE, X8SIL
-- SMBus slave address 0x2d
-- Winbond W83627DHG-P
+- Winbond W83627DHG-P, slave address 0x2d
 
 ## X8STI
-- SMBus slave address 0x2e
+- Winbond W83627DHG, slave address 0x2e
 
