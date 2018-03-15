@@ -13,7 +13,6 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 * No reliance on third-party libraries or tools (e.g. autotools, libtool, etc.)
 * Very simple and clean code -- heavily commented, well-documented, built with <code>-Werror -Wall</code> and similar flags
 * Occasionally tested under valgrind
-* Open-source, released under the 2-clause BSD license
 
 ## Supported Hardware
 At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](/doc/supported.md)
@@ -36,9 +35,6 @@ Please see the [bsdhwmon man page](/bsdhwmon.8.txt) for all command-line flags a
 
 ## Support Requests
 For bug reports, enhancements, or general support, please use the [GitHub Issues](https://github.com/koitsu/bsdhwmon/issues) interface.
-
-## License
-bsdhwmon is released under the 2-clause BSD license ("FreeBSD License") per [LICENSE](LICENSE).
 
 ## Author
 * Jeremy Chadwick &lt;jdc@koitsu.org&gt;
