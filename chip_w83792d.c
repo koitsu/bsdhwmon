@@ -80,7 +80,7 @@ w83792d_rpmconv(const uint8_t count, const uint8_t div)
 {
 	uint32_t r = 0;
 
-	VERBOSE("w83792d_rpmconv(count = 0x%02" PRIx8 ", div = " PRIu8 ")\n",
+	VERBOSE("w83792d_rpmconv(count = 0x%02" PRIx8 ", div = 0x%02" PRIu8 ")\n",
 		count, div);
 
 	if (count != 0xff && count != 0 && div != 0) {
