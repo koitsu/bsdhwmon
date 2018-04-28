@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
 #include <sys/param.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -14,7 +13,6 @@
 #include <err.h>
 #include <osreldate.h>
 #include <sysexits.h>
-
 #include "global.h"
 
 #define DEFAULT_SMBDEV	_PATH_DEV "smb0"
@@ -22,7 +20,6 @@
 /*
  * Function prototypes
  */
-void		VERBOSE(const char *, ...);
 static void	USAGE(void);
 
 /*
@@ -62,31 +59,7 @@ static int	smbfd = -1;				/* File descriptor for /dev/smbXXX */
 static int	comma_output = 0;			/* Command line flag "-c" */
 static int	json_output = 0;			/* Command line flag "-J" */
 static char	smbdev[MAXPATHLEN] = DEFAULT_SMBDEV;	/* Command line flag "-f", otherwise /dev/smb0 */
-static int	f_verbose = 0;				/* Command line flag "-v" */
-
-
-/*
- * VERBOSE() is mainly used for debugging.  Use of the "-v" flag will
- * cause underlying functions to call VERBOSE() with all sorts of
- * information.
- *
- * The format attribute is to safely squelch -Wformat-nonliteral (part
- * of of -Wformat=2) warnings about vprintf() with clang.  Reference:
- * http://clang.llvm.org/docs/AttributeReference.html#format-gnu-format
- */
-__attribute__((__format__ (__printf__, 1, 0)))
-void
-VERBOSE(const char *fmt, ...)
-{
-	if (f_verbose) {
-		va_list ap;
-
-		va_start(ap, fmt);
-		printf("==> ");
-		vprintf(fmt, ap);
-		va_end(ap);
-	}
-}
+int		f_verbose = 0;				/* Command line flag "-v" */
 
 
 static void

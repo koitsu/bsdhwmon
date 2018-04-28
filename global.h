@@ -2,7 +2,19 @@
  * SPDX-License-Identifier: BSD-2-Clause-FreeBSD
  */
 
-#include <sys/types.h>
+/*
+ * External variables (main.c)
+ */
+extern int f_verbose;
+
+
+/*
+ * VERBOSE() is mainly used for debugging.  Use of the "-v" flag will
+ * cause underlying functions to call VERBOSE() with all sorts of
+ * information.
+ */
+#define VERBOSE(fmt, args...) if (f_verbose) { printf("==> " fmt, ## args); }
+
 
 /*
  * A list of hardware monitoring ASIC types.  Every entry in this enum

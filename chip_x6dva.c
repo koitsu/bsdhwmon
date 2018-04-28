@@ -2,18 +2,16 @@
  * SPDX-License-Identifier: BSD-2-Clause-FreeBSD
  */
 
+#include <stdio.h>
 #include <string.h>
+#include <inttypes.h>
+#include <sys/types.h>
 #include "global.h"
 
 /*
  * Function prototypes
  */
 int		x6dva_main(int, struct sensors *);
-
-/*
- * External functions (main.c)
- */
-extern void	VERBOSE(const char *, ...);
 
 /*
  * External funcions (smbus_io.c)

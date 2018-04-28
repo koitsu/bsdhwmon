@@ -3,12 +3,10 @@
  */
 
 #include <sys/types.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <kenv.h>
-
 #include "global.h"
 
 const struct pinmap volts_type00[] = {
@@ -336,11 +334,6 @@ struct board boardlist[] = {
 struct board *board_lookup(const char *, const char *);
 
 /*
- * External functions (main.c)
- */
-extern void VERBOSE(const char *, ...);
-
-/*
  * External functions (output.c)
  */
 extern const char *get_chip_string(const size_t);
@@ -384,7 +377,7 @@ board_lookup(const char *maker, const char *product)
 
 				VERBOSE("\tvoltages struct: %p\n", b->voltages);
 				for (i = 0; b->voltages[i].label != NULL; ++i) {
-					VERBOSE("\t\tb->voltages[%u] = %u, %s\n", i,
+					VERBOSE("\t\tb->voltages[%zu] = %zu, %s\n", i,
 						b->voltages[i].index,
 						b->voltages[i].label
 					);
@@ -392,7 +385,7 @@ board_lookup(const char *maker, const char *product)
 
 				VERBOSE("\ttemps struct: %p\n", b->temps);
 				for (i = 0; b->temps[i].label != NULL; ++i) {
-					VERBOSE("\t\tb->temps[%u] = %u, %s\n", i,
+					VERBOSE("\t\tb->temps[%zu] = %zu, %s\n", i,
 						b->temps[i].index,
 						b->temps[i].label
 					);
@@ -400,7 +393,7 @@ board_lookup(const char *maker, const char *product)
 
 				VERBOSE("\tfans struct: %p\n", b->fans);
 				for (i = 0; b->fans[i].label != NULL; ++i) {
-					VERBOSE("\t\tb->fans[%u] = %u, %s\n", i,
+					VERBOSE("\t\tb->fans[%zu] = %zu, %s\n", i,
 						b->fans[i].index,
 						b->fans[i].label
 					);

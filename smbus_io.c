@@ -2,13 +2,14 @@
  * SPDX-License-Identifier: BSD-2-Clause-FreeBSD
  */
 
+#include <stdio.h>
 #include <sys/param.h>
 #include <dev/smbus/smb.h>
-
 #include <string.h>
 #include <err.h>
 #include <osreldate.h>
 #include <sysexits.h>
+#include "global.h"
 
 /*
  * __FreeBSD_version checks -- history and why:
@@ -33,11 +34,6 @@ void		write_byte(int, int, const char, const char);
  * Global variables
  */
 static char	ibuf[SMB_MAXBLOCKSIZE];		/* SMBus data buffer */
-
-/*
- * External functions (main.c)
- */
-extern void	VERBOSE(const char *, ...);
 
 
 /*

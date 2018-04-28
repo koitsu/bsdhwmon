@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <inttypes.h>
 #include <sysexits.h>
-
 #include "global.h"
 
 /*
@@ -18,11 +17,6 @@ void		list_models(const struct board *);
 void		sensors_output(const struct board *, const struct sensors *);
 void		sensors_output_delim(const struct board *, const struct sensors *);
 void		sensors_output_json(const struct board *, const struct sensors *);
-
-/*
- * External functions (main.c)
- */
-extern void	VERBOSE(const char *, ...);
 
 
 /*

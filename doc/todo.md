@@ -1,14 +1,6 @@
 # Short-term
 
-- Consider making VERBOSE a macro
-  - Example: `#define VERBOSE(fmt, args...) if (f_verbose) { printf("==> " fmt, ## args); }`
-  - Pros: exposes printf() formatting mistakes (ex. missing formatters) in
-    code at compile-time; vprintf() doesn't do a good job with this, and
-    compilers (both gcc and clang) don't catch all cases; proof is in
-    commit e776b2c
-  - Cons: requires `f_verbose` be declared as extern in every file using
-    VERBOSE(), and binary size grows (lots more assembly generated for if()
-    and printf(), vs. having a real function that does it)
+- Nothing at present
 
 # Long-term
 

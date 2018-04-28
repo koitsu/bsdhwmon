@@ -2,8 +2,10 @@
  * SPDX-License-Identifier: BSD-2-Clause-FreeBSD
  */
 
+#include <stdio.h>
 #include <string.h>
 #include <inttypes.h>
+#include <sys/types.h>
 #include "global.h"
 
 /*
@@ -12,11 +14,6 @@
 static uint32_t	w83793g_rpmconv(const uint16_t);
 static uint8_t	w83793g_tempadj(const uint8_t);
 int		w83793g_main(int, const int, struct sensors *);
-
-/*
- * External functions (main.c)
- */
-extern void	VERBOSE(const char *, ...);
 
 /*
  * External functions (smbus_io.c)
