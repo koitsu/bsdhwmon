@@ -18,11 +18,6 @@ can be returned, but the most common are fan RPMs, processor and system
 temperatures, and motherboard voltages.  All data is sent to standard
 output.  Usage syntax and all errors are sent to standard error.
 .Pp
-At this time,
-.Nm
-supports a multitude of Winbond hardware monitoring ICs, predominantly
-on Supermicro motherboards.
-.Pp
 The options are as follows:
 .Pp
 .Bl -tag -width indent
@@ -48,6 +43,20 @@ Increase verbosity (includes debugging output).
 requires a few hardware and software features to function:
 .Bl -enum
 .It
+A hardware monitoring chipset that "ties" into SMBus.  This is
+somewhat common on server-class motherboards, but greatly varies
+per manufacturer.  Presently
+.Nm
+supports a multitude of Winbond (Nuvoton) hardware monitoring ICs,
+predominantly on Supermicro motherboards.  If you're unsure your
+motherboard is supported, running
+.Nm
+with the
+.Fl l
+option will display a list of supported motherboards.  You may also
+wish to consult your user manual or contact the technical support
+department for your product.
+.It
 A system BIOS that provides a SMBIOS table.  Specifically, the
 existence of the
 .Cd smbios.planar.maker
@@ -57,6 +66,9 @@ and
 kernel environment strings.  You can verify the existence of these
 variables by using
 .Xr kenv 1 .
+This is needed for
+.Nm
+to reliably auto-detect your motherboard.
 .It
 .Cd "device smb"
 built into your kernel or loaded using
@@ -79,15 +91,18 @@ Failure to meet all of the above requirements will result in
 .Nm
 not functioning.
 .Sh OUTPUT
+If
+.Nm
+emits a message indicating your motherboard is unsupported, please
+follow the on-screen instructions.
+.Pp
 .Nm
 attempts to mimic output formatting and sensor strings to that of
 the BIOS's Hardware Monitoring menu option (if available).  However,
 due to limited hardware availability and user beta testing, some
 strings may not match the BIOS exactly (such as "PECI Agent" being
-replaced with "CPU Core").
-.Pp
-For example, a Supermicro PDSMi+ motherboard might output something
-like this:
+replaced with "CPU Core").  For example, a Supermicro PDSMi+
+motherboard would output something resembling this:
 .Pp
 .Bd -literal -offset indent
 CPU Temperature            34 C
@@ -173,6 +188,8 @@ The reason for this is unknown, but the values being returned from the
 Winbond chipset do appear correct.  If you're experiencing this bug, please
 get in contact with the author.  Git commit ad3bbad may have rectified this
 bug.
+.Pp
+Please report all issues at https://github.com/koitsu/bsdhwmon/issues
 .Sh CONTRIBUTORS
 The following individuals have made contributions to
 .Nm , either by helping with the code, testing the software, or recommending

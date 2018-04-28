@@ -13,9 +13,6 @@ DESCRIPTION
      system temperatures, and motherboard voltages.  All data is sent to stan-
      dard output.  Usage syntax and all errors are sent to standard error.
 
-     At this time, bsdhwmon supports a multitude of Winbond hardware monitor-
-     ing ICs, predominantly on Supermicro motherboards.
-
      The options are as follows:
 
      -J      Output data in a JSON-compliant format.
@@ -36,30 +33,41 @@ DESCRIPTION
 REQUIREMENTS
      bsdhwmon requires a few hardware and software features to function:
 
-     1.   A system BIOS that provides a SMBIOS table.  Specifically, the exis-
+     1.   A hardware monitoring chipset that "ties" into SMBus.  This is some-
+          what common on server-class motherboards, but greatly varies per
+          manufacturer.  Presently bsdhwmon supports a multitude of Winbond
+          (Nuvoton) hardware monitoring ICs, predominantly on Supermicro moth-
+          erboards.  If you're unsure your motherboard is supported, running
+          bsdhwmon with the -l option will display a list of supported mother-
+          boards.  You may also wish to consult your user manual or contact
+          the technical support department for your product.
+
+     2.   A system BIOS that provides a SMBIOS table.  Specifically, the exis-
           tence of the smbios.planar.maker and smbios.planar.product kenv(2)
           kernel environment strings.  You can verify the existence of these
-          variables by using kenv(1).
+          variables by using kenv(1).  This is needed for bsdhwmon to reliably
+          auto-detect your motherboard.
 
-     2.   device smb built into your kernel or loaded using kldload(8),
+     3.   device smb built into your kernel or loaded using kldload(8),
 
-     3.   device smbus built into your kernel or loaded using kldload(8),
+     4.   device smbus built into your kernel or loaded using kldload(8),
 
-     4.   An appropriate SMBus chipset driver, such as amdsmb(4), ichsmb(4),
+     5.   An appropriate SMBus chipset driver, such as amdsmb(4), ichsmb(4),
           or nfsmb(4), built into your kernel or loaded via kldload(8).
 
      Failure to meet all of the above requirements will result in bsdhwmon not
      functioning.
 
 OUTPUT
+     If bsdhwmon emits a message indicating your motherboard is unsupported,
+     please follow the on-screen instructions.
+
      bsdhwmon attempts to mimic output formatting and sensor strings to that
      of the BIOS's Hardware Monitoring menu option (if available).  However,
      due to limited hardware availability and user beta testing, some strings
      may not match the BIOS exactly (such as "PECI Agent" being replaced with
-     "CPU Core").
-
-     For example, a Supermicro PDSMi+ motherboard might output something like
-     this:
+     "CPU Core").  For example, a Supermicro PDSMi+ motherboard would output
+     something resembling this:
 
            CPU Temperature            34 C
            System Temperature         36 C
@@ -134,6 +142,8 @@ BUGS
      the Winbond chipset do appear correct.  If you're experiencing this bug,
      please get in contact with the author.  Git commit ad3bbad may have rec-
      tified this bug.
+
+     Please report all issues at https://github.com/koitsu/bsdhwmon/issues
 
 CONTRIBUTORS
      The following individuals have made contributions to bsdhwmon, either by
