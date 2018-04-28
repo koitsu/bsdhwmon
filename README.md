@@ -18,8 +18,8 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](/doc/supported.md)
 
 ## Supported Operating Systems
-* FreeBSD 11.x (stable/11)
-* FreeBSD 10.x (stable/10)
+* FreeBSD 11.x amd64/i386
+* FreeBSD 10.x amd64/i386
 
 ## Untested Operating Systems
 * FreeBSD 12.x (head/current)
