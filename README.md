@@ -42,5 +42,5 @@ For bug reports, enhancements, or general support, please use the [GitHub Issues
 ## Repositories
 * Source: https://github.com/koitsu/bsdhwmon
 * Distribution: https://github.com/koitsu/bsdhwmon/releases
-* Distribution (20150429 and older): http://jdc.koitsu.org/freebsd/bsdhwmon-archive/
+* Distribution (20150429 and older): https://bsdhwmon.koitsu.org/archive/
 
