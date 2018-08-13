@@ -1,5 +1,12 @@
 # Supermicro
 
+## End-of-Life (EoL) Notice
+
+As of at least August 2018, Supermicro is no longer providing documentation for
+products which are EoL'd (end-of-life); refer to
+[issues/6](https://github.com/koitsu/bsdhwmon/issues/6#issuecomment-412623640)
+for verification.
+
 ## Preface
 
 The below is documentation sent to me verbatim by Supermicro Technical Support
@@ -11,9 +18,7 @@ I used to have a substantially larger amount of information on many other
 boards that bsdhwmon supports (i.e. ones not listed below).  That information
 was lost in a ZFS-related mishap.  At the time, I did not have working backups,
 and I wasn't using a public repository for version control (I was using CVS
-locally stored on ZFS).  I may be able to re-obtain this information from
-Supermicro, but I'm not sure what their retention policies are on documentation
-for EoL'd boards.
+locally stored on ZFS).
 
 I've done my best to retain the raw formatting of the information provided,
 where applicable.
