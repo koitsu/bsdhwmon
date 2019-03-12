@@ -11,6 +11,7 @@
 #include <kenv.h>
 #include <paths.h>
 #include <err.h>
+#include <errno.h>
 #include <osreldate.h>
 #include <sysexits.h>
 #include "global.h"
@@ -158,26 +159,26 @@ main(int argc, char *argv[])
 	 * otherwise bsdhwmon doesn't support the motherboard in question.
 	 */
 	if ((maker = calloc(1, KENV_MVALLEN)) == NULL) {
+		exitcode = errno;
 		warn("calloc() for maker failed");
-		exitcode = EX_OSERR;
 		goto finish;
 	}
 
 	if ((product = calloc(1, KENV_MVALLEN)) == NULL) {
+		exitcode = errno;
 		warn("calloc() for product failed");
-		exitcode = EX_OSERR;
 		goto finish;
 	}
 
 	if (kenv(KENV_GET, kenv_planar_maker, maker, KENV_MVALLEN) == -1) {
+		exitcode = errno;
 		warn("kenv() for %s failed", kenv_planar_maker);
-		exitcode = EX_OSERR;
 		goto finish;
 	}
 
 	if (kenv(KENV_GET, kenv_planar_product, product, KENV_MVALLEN) == -1) {
+		exitcode = errno;
 		warn("kenv() for %s failed", kenv_planar_product);
-		exitcode = EX_OSERR;
 		goto finish;
 	}
 
@@ -190,8 +191,8 @@ main(int argc, char *argv[])
 	}
 
 	if ((sdata = calloc(1, sizeof(struct sensors))) == NULL) {
+		exitcode = errno;
 		warn("calloc() for sdata failed");
-		exitcode = EX_DATAERR;
 		goto finish;
 	}
 
@@ -205,8 +206,8 @@ main(int argc, char *argv[])
 	 * programs simultaneously reading/writing to /dev/smbX.
 	 */
 	if ((smbfd = open(smbdev, O_RDWR|O_EXLOCK)) < 0) {
+		exitcode = errno;
 		warn("open() on %s failed", smbdev);
-		exitcode = EX_NOINPUT;
 		goto finish;
 	}
 
