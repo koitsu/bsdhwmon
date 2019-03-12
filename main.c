@@ -135,7 +135,7 @@ main(int argc, char *argv[])
 	 * bsdhwmon requires root access due to opening /dev/smbX
 	 */
 	if (geteuid() != 0) {
-		warnx("Must be run as root, or setuid root");
+		warnx("Must be run as root, or setuid root.");
 		exitcode = EX_NOPERM;
 		goto finish;
 	}
@@ -144,7 +144,7 @@ main(int argc, char *argv[])
 	 * Do some basic argument conflict checking
 	 */
 	if (comma_output && json_output) {
-		warnx("Please choose only one output format");
+		warnx("Please choose only one output format.");
 		exitcode = EX_USAGE;
 		goto finish;
 	}
