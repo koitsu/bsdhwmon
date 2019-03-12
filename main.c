@@ -15,8 +15,6 @@
 #include <sysexits.h>
 #include "global.h"
 
-#define DEFAULT_SMBDEV	_PATH_DEV "smb0"
-
 /*
  * Function prototypes
  */
@@ -51,15 +49,17 @@ extern struct board	boardlist;
 /*
  * Global variables
  */
+#define DEFAULT_SMBDEV	_PATH_DEV "smb0"
+
 /*
  * smbfd needs to be pre-initialised to -1 for proper error handling
  * scenarios during start-up (see comment near top of main())
  */
-static int	smbfd = -1;				/* File descriptor for /dev/smbXXX */
-static int	comma_output = 0;			/* Command line flag "-c" */
-static int	json_output = 0;			/* Command line flag "-J" */
-static char	smbdev[MAXPATHLEN] = DEFAULT_SMBDEV;	/* Command line flag "-f", otherwise /dev/smb0 */
-int		f_verbose = 0;				/* Command line flag "-v" */
+static int	smbfd = -1;			/* File descriptor for /dev/smbXXX */
+static int	comma_output = 0;		/* Command line flag "-c" */
+static int	json_output = 0;		/* Command line flag "-J" */
+const char *	smbdev = DEFAULT_SMBDEV;	/* Command line flag "-f", otherwise /dev/smb0 */
+int		f_verbose = 0;			/* Command line flag "-v" */
 
 
 static void
@@ -112,11 +112,7 @@ main(int argc, char *argv[])
 				comma_output = 1;
 				break;
 			case 'f':
-				if (strlcpy(smbdev, optarg, MAXPATHLEN) >= MAXPATHLEN) {
-					warnx("Device pathname exceeds %u bytes in length", MAXPATHLEN);
-					exitcode = EX_SOFTWARE;
-					goto finish;
-				}
+				smbdev = optarg;
 				break;
 			case 'l':
 				list_models(&boardlist);
