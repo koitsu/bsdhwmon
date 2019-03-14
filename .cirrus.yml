@@ -1,15 +1,40 @@
-task:
+freebsd_12_0_task:
   freebsd_instance:
-    matrix:
-      image: freebsd-12-0-release-amd64
-      image: freebsd-11-2-release-amd64
-      image: freebsd-11-1-release-amd64
-      image: freebsd-10-4-release-amd64
-  build_script:
+    image: freebsd-12-0-release-amd64
+  script:
     - make clean
     - make -DDEBUG
     - make man
-  check_script:
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
+freebsd_11_2_task:
+  freebsd_instance:
+    image: freebsd-11-2-release-amd64
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
+freebsd_11_1_task:
+  freebsd_instance:
+    image: freebsd-11-1-release-amd64
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
+freebsd_10_4_task:
+  freebsd_instance:
+    image: freebsd-10-4-release-amd64
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
     - ./bsdhwmon -l
     - test -f bsdhwmon.8.txt
 
