@@ -1,4 +1,10 @@
 # bsdhwmon
+
+[![releng/12.0 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+[![releng/11.2 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_2)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+[![releng/11.1 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+[![releng/10.4 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_10_4)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+
 bsdhwmon is a program for FreeBSD for monitoring hardware sensors (fans, temperatures, voltages, chassis intrusion, and more) on commerical-grade server hardware.
 
 bsdhwmon is developed with a very different mentality compared to other hardware monitoring software:
@@ -18,11 +24,12 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](/doc/supported.md)
 
 ## Supported Operating Systems
+* FreeBSD 12.x amd64
 * FreeBSD 11.x amd64/i386
 * FreeBSD 10.x amd64/i386
 
 ## Untested Operating Systems
-* FreeBSD 12.x (head/current)
+* FreeBSD 13.x (head/current)
 
 ## Deprecated (Unsupported) Operating Systems
 * FreeBSD 9.x
