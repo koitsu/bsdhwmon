@@ -20,7 +20,7 @@ ${OBJS}: global.h
 man: bsdhwmon.8.txt
 
 bsdhwmon.8.txt: bsdhwmon.8
-	troff -Tascii -mman bsdhwmon.8 | grotty -c -b -o -u > ${.TARGET}
+	mandoc -Tascii bsdhwmon.8 | col -bx > ${.TARGET}
 
 clean:
 	-rm -f bsdhwmon bsdhwmon.8.txt ${OBJS} *.core

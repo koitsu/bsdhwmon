@@ -1,17 +1,17 @@
 BSDHWMON(8)             FreeBSD System Manager's Manual            BSDHWMON(8)
 
 NAME
-     bsdhwmon -- hardware sensor monitoring utility
+     bsdhwmon - hardware sensor monitoring utility
 
 SYNOPSIS
      bsdhwmon [-Jchlv] [-f device]
 
 DESCRIPTION
      bsdhwmon is a user-land application which communicates via SMBus with
-     hardware monitoring ICs on motherboards.  Many different pieces of infor-
-     mation can be returned, but the most common are fan RPMs, processor and
-     system temperatures, and motherboard voltages.  All data is sent to stan-
-     dard output.  Usage syntax and all errors are sent to standard error.
+     hardware monitoring ICs on motherboards.  Many different pieces of
+     information can be returned, but the most common are fan RPMs, processor
+     and system temperatures, and motherboard voltages.  All data is sent to
+     standard output.  Usage syntax and all errors are sent to standard error.
 
      The options are as follows:
 
@@ -33,20 +33,20 @@ DESCRIPTION
 REQUIREMENTS
      bsdhwmon requires a few hardware and software features to function:
 
-     1.   A hardware monitoring chipset that "ties" into SMBus.  This is some-
-          what common on server-class motherboards, but greatly varies per
+     1.   A hardware monitoring chipset that "ties" into SMBus.  This is
+          somewhat common on server-class motherboards, but greatly varies per
           manufacturer.  Presently bsdhwmon supports a multitude of Winbond
-          (Nuvoton) hardware monitoring ICs, predominantly on Supermicro moth-
-          erboards.  If you're unsure your motherboard is supported, running
-          bsdhwmon with the -l option will display a list of supported mother-
-          boards.  You may also wish to consult your user manual or contact
-          the technical support department for your product.
+          (Nuvoton) hardware monitoring ICs, predominantly on Supermicro
+          motherboards.  If you're unsure your motherboard is supported,
+          running bsdhwmon with the -l option will display a list of supported
+          motherboards.  You may also wish to consult your user manual or
+          contact the technical support department for your product.
 
-     2.   A system BIOS that provides a SMBIOS table.  Specifically, the exis-
-          tence of the smbios.planar.maker and smbios.planar.product kenv(2)
-          kernel environment strings.  You can verify the existence of these
-          variables by using kenv(1).  This is needed for bsdhwmon to reliably
-          auto-detect your motherboard.
+     2.   A system BIOS that provides a SMBIOS table.  Specifically, the
+          existence of the smbios.planar.maker and smbios.planar.product
+          kenv(2) kernel environment strings.  You can verify the existence of
+          these variables by using kenv(1).  This is needed for bsdhwmon to
+          reliably auto-detect your motherboard.
 
      3.   device smb built into your kernel or loaded using kldload(8),
 
@@ -105,10 +105,10 @@ OUTPUT
            5VSB                    4.896 V
            VBAT                    3.104 V
 
-     Slight differentials in sensor values (e.g. a few degrees, voltage fluc-
-     tuations, or RPM variance) are normal.  Operating systems often make use
-     of system and processor which may halt processors while idling (e.g. x86
-     "HLT" opcode), or make use of C1 through C4 power-saving states;
+     Slight differentials in sensor values (e.g. a few degrees, voltage
+     fluctuations, or RPM variance) are normal.  Operating systems often make
+     use of system and processor which may halt processors while idling (e.g.
+     x86 "HLT" opcode), or make use of C1 through C4 power-saving states;
      powerd(8) on FreeBSD is known to do this.  System BIOSes are known to
      offer the ability to throttle fan speed based on load.  Please refer to
      your System User Manual for details.
@@ -130,18 +130,18 @@ BUGS
      Some Supermicro systems using the Winbond W83792D chipset may report
      incorrect +5V voltages; the Supermicro P8SC8 and P8SCT motherboards are
      such examples.  This is caused by a faulty formula used to calculate
-     voltages from IC registers.  The formulas used are not officially docu-
-     mented, and the actual circuitry (resistors, etc.) tied to the pins on
-     the Winbond chip do not match what Winbond used in their documentation.
-     Formula documentation has been requested of Supermicro, but no response
-     has been received at this time.
+     voltages from IC registers.  The formulas used are not officially
+     documented, and the actual circuitry (resistors, etc.) tied to the pins
+     on the Winbond chip do not match what Winbond used in their
+     documentation.  Formula documentation has been requested of Supermicro,
+     but no response has been received at this time.
 
-     There has been an isolated report of a Supermicro P8SCi system occasion-
-     ally reporting extremely high RPMs (in the tens of thousands) for some
-     fans.  The reason for this is unknown, but the values being returned from
-     the Winbond chipset do appear correct.  If you're experiencing this bug,
-     please get in contact with the author.  Git commit ad3bbad may have rec-
-     tified this bug.
+     There has been an isolated report of a Supermicro P8SCi system
+     occasionally reporting extremely high RPMs (in the tens of thousands) for
+     some fans.  The reason for this is unknown, but the values being returned
+     from the Winbond chipset do appear correct.  If you're experiencing this
+     bug, please get in contact with the author.  Git commit ad3bbad may have
+     rectified this bug.
 
      Please report all issues at https://github.com/koitsu/bsdhwmon/issues
 
