@@ -1,4 +1,4 @@
-freebsd_12_0_task:
+releng_12_0_task:
   freebsd_instance:
     image: freebsd-12-0-release-amd64
   script:
@@ -8,7 +8,7 @@ freebsd_12_0_task:
     - ./bsdhwmon -l
     - test -f bsdhwmon.8.txt
 
-freebsd_11_2_task:
+releng_11_2_task:
   freebsd_instance:
     image: freebsd-11-2-release-amd64
   script:
@@ -18,7 +18,7 @@ freebsd_11_2_task:
     - ./bsdhwmon -l
     - test -f bsdhwmon.8.txt
 
-freebsd_11_1_task:
+releng_11_1_task:
   freebsd_instance:
     image: freebsd-11-1-release-amd64
   script:
@@ -28,7 +28,7 @@ freebsd_11_1_task:
     - ./bsdhwmon -l
     - test -f bsdhwmon.8.txt
 
-freebsd_10_4_task:
+releng_10_4_task:
   freebsd_instance:
     image: freebsd-10-4-release-amd64
   script:
