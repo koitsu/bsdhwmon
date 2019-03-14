@@ -28,9 +28,39 @@ releng_11_1_task:
     - ./bsdhwmon -l
     - test -f bsdhwmon.8.txt
 
+releng_11_0_task:
+  freebsd_instance:
+    image: freebsd-11-0-release-p1-amd64
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
 releng_10_4_task:
   freebsd_instance:
     image: freebsd-10-4-release-amd64
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
+releng_10_3_task:
+  freebsd_instance:
+    image: freebsd-10-3-release-amd64
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
+releng_10_2_task:
+  freebsd_instance:
+    image: freebsd-10-2-release-amd64
   script:
     - make clean
     - make -DDEBUG
