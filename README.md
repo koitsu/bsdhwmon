@@ -16,7 +16,7 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 * Occasionally tested under valgrind
 
 ## Supported Hardware
-At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](/doc/supported.md)
+At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](/doc/supported.md).
 
 ## Supported Operating Systems
 * FreeBSD 12.x amd64
