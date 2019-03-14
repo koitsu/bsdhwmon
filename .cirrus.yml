@@ -1,7 +1,15 @@
-build_task:
+task:
   freebsd_instance:
     matrix:
+      image: freebsd-12-0-release-amd64
+      image: freebsd-11-2-release-amd64
+      image: freebsd-11-1-release-amd64
       image: freebsd-10-4-release-amd64
   build_script:
+    - make clean
     - make -DDEBUG
+    - make man
+  check_script:
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
 
