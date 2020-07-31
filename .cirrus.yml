@@ -1,6 +1,36 @@
+releng_12_1_task:
+  freebsd_instance:
+    image: freebsd-12-1-release-amd64
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
 releng_12_0_task:
   freebsd_instance:
     image: freebsd-12-0-release-amd64
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
+releng_11_4_task:
+  freebsd_instance:
+    image: freebsd-11-4-release-amd64
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
+releng_11_3_task:
+  freebsd_instance:
+    image: freebsd-11-3-release-amd64
   script:
     - make clean
     - make -DDEBUG
