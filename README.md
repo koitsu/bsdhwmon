@@ -20,18 +20,18 @@ At this time, only a small set of Supermicro hardware is supported.  For an offi
 
 ## Supported Operating Systems
 * FreeBSD 12.x amd64
-[![releng/12.1 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-[![releng/12.0 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-* FreeBSD 11.x amd64/i386
-[![releng/11.4 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_4)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-[![releng/11.3 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-[![releng/11.2 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_2)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-[![releng/11.1 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-[![releng/11.0 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-* FreeBSD 10.x amd64/i386
-[![releng/10.4 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_10_4)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-[![releng/10.3 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_10_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-[![releng/10.2 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_10_2)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  * [![releng/12.1 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  [![releng/12.0 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+* FreeBSD 11.x amd64
+  * [![releng/11.4 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_4)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  [![releng/11.3 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  [![releng/11.2 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_2)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  [![releng/11.1 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  [![releng/11.0 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+* FreeBSD 10.x amd64
+  * [![releng/10.4 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_10_4)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  [![releng/10.3 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_10_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  [![releng/10.2 Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_10_2)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 
 ## Untested Operating Systems
 * FreeBSD 13.x (head/current)
