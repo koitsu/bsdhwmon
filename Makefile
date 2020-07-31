@@ -26,7 +26,7 @@ bsdhwmon: ${OBJS}
 depend:
 	${CC} -E -MM ${SRCS} > .depend
 
-.include ".depend"
+.-include ".depend"
 
 man: bsdhwmon.8.txt
 
