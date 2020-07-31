@@ -19,14 +19,14 @@ bsdhwmon: ${OBJS}
 # BSD make will read the .depend file automatically on invocation, which
 # tracks allOBJS targets, and their associated source and #include
 # dependencies.  However, in the case an #include is removed from a .c
-# file, this can result in a "stale dependency" warning.  To alleviate
-# that, we explicitly use .dinclude to ignore warnings, errors, and
-# stale dependency warnings.
+# file, this can result in a "stale dependency" warning.  We could
+# alleviate that by using .dinclude ".depend", except FreeBSD 10.3 and
+# earlier lacks support for the directive.  For now, just accept it.
 
 depend:
 	${CC} -E -MM ${SRCS} > .depend
 
-.dinclude ".depend"
+.include ".depend"
 
 man: bsdhwmon.8.txt
 
