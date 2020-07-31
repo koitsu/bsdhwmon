@@ -1,3 +1,13 @@
+releng_13_0_task:
+  freebsd_instance:
+    image: freebsd-13-0-snap
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
 releng_12_1_task:
   freebsd_instance:
     image: freebsd-12-1-release-amd64
