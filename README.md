@@ -19,6 +19,8 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](/doc/supported.md).
 
 ## Supported Operating Systems
+* FreeBSD 13.0 amd64
+  * [![13.0-CURRENT Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=current_13_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 * FreeBSD 12.x amd64
   * [![12.1-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 * FreeBSD 11.x amd64
@@ -26,9 +28,10 @@ At this time, only a small set of Supermicro hardware is supported.  For an offi
   [![11.3-STABLE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=stable_11_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 
 ## Unsupported Operating Systems
-* FreeBSD 13.x &mdash; untested (may work, give it a try)
-* FreeBSD 12.0, 11.2, 11.1, 11.0, 10.x &mdash; officially EoL'd but likely will work; give it a try!
-* FreeBSD 9.x, 8.x, 7.x, 6.x &mdash; deprecated
+* FreeBSD 12.0 &mdash; officially EoL'd but probably still works
+* FreeBSD 11.2, 11.1, 11.0 &mdash; officially EoL'd but probably still works
+* FreeBSD 10.x &mdash; officially EoL'd but probably still works
+* FreeBSD 9.x, 8.x, 7.x, 6.x &mdash; deprecated as of `[79f7d2cd](https://github.com/koitsu/bsdhwmon/commit/79f7d2cdd8e7b21bcc9e39e4025377edc47c0c5f)`
 
 ## Usage
 Please see the [bsdhwmon man page](/bsdhwmon.8.txt) for all command-line flags and usage details.
