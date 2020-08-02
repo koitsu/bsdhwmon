@@ -23,7 +23,7 @@ At this time, only a small set of Supermicro hardware is supported.  For an offi
   * [![12.1-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 * FreeBSD 11.x amd64
   * [![11.4-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_4)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-  [![11.3-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  [![11.3-STABLE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=stable_11_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 
 ## Unsupported Operating Systems
 * FreeBSD 13.x &mdash; untested (may work, give it a try)

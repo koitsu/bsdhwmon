@@ -1,6 +1,16 @@
+current_13_0_task:
+  freebsd_instance:
+    image_family: freebsd-13-0-snap
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
+
 releng_12_1_task:
   freebsd_instance:
-    image: freebsd-12-1-release-amd64
+    image_family: freebsd-12-1
   script:
     - make clean
     - make -DDEBUG
@@ -10,7 +20,7 @@ releng_12_1_task:
 
 releng_11_4_task:
   freebsd_instance:
-    image: freebsd-11-4-release-amd64
+    image_family: freebsd-11-4
   script:
     - make clean
     - make -DDEBUG
@@ -18,9 +28,13 @@ releng_11_4_task:
     - ./bsdhwmon -l
     - test -f bsdhwmon.8.txt
 
-releng_11_3_task:
+# freebsd-11-3 (-RELEASE) doesn't work; need to use a snapshot
+# https://github.com/cirruslabs/cirrus-ci-docs/issues/686
+# https://github.com/cirruslabs/cirrus-ci-docs/issues/359
+
+stable_11_3_task:
   freebsd_instance:
-    image: freebsd-11-3-release-amd64
+    image_family: freebsd-11-3-snap
   script:
     - make clean
     - make -DDEBUG
