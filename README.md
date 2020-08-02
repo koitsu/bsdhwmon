@@ -31,7 +31,7 @@ At this time, only a small set of Supermicro hardware is supported.  For an offi
 * FreeBSD 12.0 &mdash; officially EoL'd but probably still works
 * FreeBSD 11.2, 11.1, 11.0 &mdash; officially EoL'd but probably still works
 * FreeBSD 10.x &mdash; officially EoL'd but probably still works
-* FreeBSD 9.x, 8.x, 7.x, 6.x &mdash; deprecated as of 79f7d2cdd8e7b21bcc9e39e4025377edc47c0c5f
+* FreeBSD 9.x, 8.x, 7.x, 6.x &mdash; deprecated as of https://github.com/koitsu/bsdhwmon/commit/79f7d2cdd8e7b21bcc9e39e4025377edc47c0c5f
 
 ## Usage
 Please see the [bsdhwmon man page](/bsdhwmon.8.txt) for all command-line flags and usage details.
