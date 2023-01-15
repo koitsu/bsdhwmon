@@ -19,10 +19,12 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](/doc/supported.md).
 
 ## Supported Operating Systems
-* FreeBSD 13.0 amd64
-  * [![13.0-CURRENT Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=current_13_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+* FreeBSD 14.0 amd64
+  * [![14.0-CURRENT Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=current_14_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+* FreeBSD 13.x amd64
+  * [![13.1-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_13_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 * FreeBSD 12.x amd64
-  * [![12.1-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  * [![12.3-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 * FreeBSD 11.x amd64
   * [![11.4-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_4)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
   [![11.3-STABLE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=stable_11_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
