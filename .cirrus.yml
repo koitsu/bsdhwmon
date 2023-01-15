@@ -1,55 +1,40 @@
 # https://cirrus-ci.org/guide/FreeBSD/#freebsd-virtual-machines
+# https://cirrus-ci.org/guide/tips-and-tricks/#sharing-configuration-between-tasks
+# https://stackoverflow.com/a/6651436
+
+default: &DEFAULT
+  script:
+    - make clean
+    - make -DDEBUG
+    - make man
+    - ./bsdhwmon -l
+    - test -f bsdhwmon.8.txt
 
 current_14_0_task:
+  <<: *DEFAULT
   freebsd_instance:
     image_family: freebsd-14-0-snap
-  script:
-    - make clean
-    - make -DDEBUG
-    - make man
-    - ./bsdhwmon -l
-    - test -f bsdhwmon.8.txt
 
 releng_13_1_task:
+  <<: *DEFAULT
   freebsd_instance:
     image_family: freebsd-13-1
-  script:
-    - make clean
-    - make -DDEBUG
-    - make man
-    - ./bsdhwmon -l
-    - test -f bsdhwmon.8.txt
 
 releng_12_3_task:
+  <<: *DEFAULT
   freebsd_instance:
     image_family: freebsd-12-3
-  script:
-    - make clean
-    - make -DDEBUG
-    - make man
-    - ./bsdhwmon -l
-    - test -f bsdhwmon.8.txt
 
 releng_11_4_task:
+  <<: *DEFAULT
   freebsd_instance:
     image_family: freebsd-11-4
-  script:
-    - make clean
-    - make -DDEBUG
-    - make man
-    - ./bsdhwmon -l
-    - test -f bsdhwmon.8.txt
 
 # freebsd-11-3 (-RELEASE) doesn't work; need to use a snapshot
 # https://github.com/cirruslabs/cirrus-ci-docs/issues/686
 # https://github.com/cirruslabs/cirrus-ci-docs/issues/359
 
 stable_11_3_task:
+  <<: *DEFAULT
   freebsd_instance:
     image_family: freebsd-11-3-snap
-  script:
-    - make clean
-    - make -DDEBUG
-    - make man
-    - ./bsdhwmon -l
-    - test -f bsdhwmon.8.txt
