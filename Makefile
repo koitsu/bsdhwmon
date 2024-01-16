@@ -3,10 +3,10 @@
 #
 
 .if defined(DEBUG)
-CFLAGS+=	-g3 -ggdb
+CFLAGS+=	-g3 -ggdb -fno-common
 .endif
 
-CFLAGS+=	-Werror -Wall -Wextra -Wformat=2 -Wbad-function-cast -Wcast-align -Wdeclaration-after-statement -Wdisabled-optimization -Wfloat-equal -Winline -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wold-style-definition -Wpacked -Wpointer-arith -Wredundant-decls -Wstrict-prototypes -Wunreachable-code -Wwrite-strings
+CFLAGS+=	-Werror -Wall -Wextra -Wformat=2 -Wbad-function-cast -Wcast-align -Wdeclaration-after-statement -Wdisabled-optimization -Wfloat-equal -Winline -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wold-style-definition -Wpacked -Wpointer-arith -Wredundant-decls -Wstrict-prototypes -Wunreachable-code -Wwrite-strings -fno-common
 
 SRCS=	main.c boards.c output.c chip_w83792d.c chip_w83793g.c chip_x6dva.c smbus_io.c
 OBJS=	${SRCS:.c=.o}
