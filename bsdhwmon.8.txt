@@ -159,4 +159,4 @@ CONTRIBUTORS
      lm_sensors project, for providing an unofficial secondary source of IC
      documentation and details of chip quirks.
 
-                               January 14, 2023
+                               January 15, 2024
