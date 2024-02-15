@@ -19,20 +19,17 @@ bsdhwmon is developed with a very different mentality compared to other hardware
 At this time, only a small set of Supermicro hardware is supported.  For an official list of supported hardware and models, please see [doc/supported.md](/doc/supported.md).
 
 ## Supported Operating Systems
-* FreeBSD 14.0 amd64
-  * [![14.0-CURRENT Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=current_14_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+* FreeBSD 15.0 amd64
+  * [![15.0-CURRENT Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=current_15_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+* FreeBSD 14.x amd64
+  * [![14.0-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_14_0)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 * FreeBSD 13.x amd64
-  * [![13.1-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_13_1)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-* FreeBSD 12.x amd64
-  * [![12.3-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_12_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-* FreeBSD 11.x amd64
-  * [![11.4-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_11_4)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
-  [![11.3-STABLE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=stable_11_3)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
+  * [![13.1-RELEASE Build Status](https://api.cirrus-ci.com/github/koitsu/bsdhwmon.svg?task=releng_13_2)](https://cirrus-ci.com/github/koitsu/bsdhwmon)
 
 ## Unsupported Operating Systems
-* FreeBSD 13.0 &mdash; officially EoL'd but probably still works
-* FreeBSD 12.2, 12.1, 12.0 &mdash; officially EoL'd but probably still works
-* FreeBSD 11.2, 11.1, 11.0 &mdash; officially EoL'd but probably still works
+* FreeBSD 13.1, 13.0 &mdash; officially EoL'd but probably still works
+* FreeBSD 12.3, 12.2, 12.1, 12.0 &mdash; officially EoL'd but probably still works
+* FreeBSD 11.4, 11.3, 11.2, 11.1, 11.0 &mdash; officially EoL'd but probably still works
 * FreeBSD 10.x &mdash; officially EoL'd but probably still works
 * FreeBSD 9.x, 8.x, 7.x, 6.x &mdash; deprecated as of [commit 79f7d2c](https://github.com/koitsu/bsdhwmon/commit/79f7d2cdd8e7b21bcc9e39e4025377edc47c0c5f)
 

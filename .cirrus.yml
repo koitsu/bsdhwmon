@@ -10,31 +10,17 @@ default: &DEFAULT
     - ./bsdhwmon -l
     - test -f bsdhwmon.8.txt
 
-current_14_0_task:
+current_15_0_task:
   <<: *DEFAULT
   freebsd_instance:
-    image_family: freebsd-14-0-snap
+    image_family: freebsd-15-0-snap
 
-releng_13_1_task:
+releng_14_0_task:
   <<: *DEFAULT
   freebsd_instance:
-    image_family: freebsd-13-1
+    image_family: freebsd-14-0
 
-releng_12_3_task:
+releng_13_2_task:
   <<: *DEFAULT
   freebsd_instance:
-    image_family: freebsd-12-3
-
-releng_11_4_task:
-  <<: *DEFAULT
-  freebsd_instance:
-    image_family: freebsd-11-4
-
-# freebsd-11-3 (-RELEASE) doesn't work; need to use a snapshot
-# https://github.com/cirruslabs/cirrus-ci-docs/issues/686
-# https://github.com/cirruslabs/cirrus-ci-docs/issues/359
-
-stable_11_3_task:
-  <<: *DEFAULT
-  freebsd_instance:
-    image_family: freebsd-11-3-snap
+    image_family: freebsd-13-2
