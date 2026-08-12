@@ -1,3 +1,17 @@
+# Shutdown notice
+
+As of August 2026, this project is no longer maintained, as I intentionally no longer use FreeBSD
+
+The bsdhwmon archive has also been removed.  (If you want the archive tarballs, contact me and I'll provide
+them.)
+
+Additionally, CirrusCI (who provided FreeBSD CI infrastructure for free) shut down in June 2026 and there
+are no free CI providers that offer FreeBSD.
+
+Users of bsdhwmon should look elsewhere for solutions, including considering other OSes.  Anyone who wishes
+to fork bsdhwmon it is encouraged to do so, though I do ask you retain the 2-clause BSD license as it still
+remains quite practical.
+
 # bsdhwmon
 
 bsdhwmon is a program for FreeBSD for monitoring hardware sensors (fans, temperatures, voltages, chassis intrusion, and more) on commerical-grade server hardware.
@@ -46,4 +60,3 @@ For bug reports, enhancements, or general support, please use the [GitHub Issues
 * Source: https://github.com/koitsu/bsdhwmon
 * Distribution: https://github.com/koitsu/bsdhwmon/releases
 * Distribution (20150429 and older): https://bsdhwmon.koitsu.org/archive/
-
